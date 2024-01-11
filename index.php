@@ -66,14 +66,119 @@
 
 </header>
 <main>
-    <section class="hero home-header is-large is-info">
+    <section class="hero home-header is-medium is-info">
         <div class="hero-body">
 
+            <div class="columns is-centered">
+                <div class="column is-centered">
+                    <h1 class="is-size-1 has-text-centered mb-4"> Haak vreugde bij Wilma</h1>
+                    <div class="columns">
+                        <div class="column">
+                        <p class="has-text-centered is-size-4 pb-4"> Bestel hier de beste, mooiste en meest goedkope haakwerken
+                            van Nederland
+                        </p>
+                            <div class="columns is-centered">
+                                <button class="button is-normal reserve-button">Start Shopping !</button>
+                            </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
+        </div>
+    </section>
+
+
+    <section class="section is-medium examples">
+        <div class="columns">
+            <div class="column">
+            <h1 class="has-text-centered is-size-1">Voormalige projecten</h1>
+        <div class="columns">
+            <div class="column">
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-info example-projects">
+                        <p class="title">Middle tile</p>
+                        <p class="subtitle">With an image</p>
+                        <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                        </figure>
+                        <p class="subtitle pt-3">With an image</p>
+                    </article>
+                </div>
+            </div>
+            <div class="column">
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-info example-projects">
+                        <p class="title">Middle tile</p>
+                        <p class="subtitle">With an image</p>
+                        <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                        </figure>
+                        <p class="subtitle pt-3">With an image</p>
+                    </article>
+                </div>
+            </div>
+            <div class="column">
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-info example-projects">
+                        <p class="title">Middle tile</p>
+                        <p class="subtitle">With an image</p>
+                        <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                        </figure>
+                        <p class="subtitle pt-3">With an image</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+
     </section>
 </main>
 <footer>
-
+    <section class="hero is-small is-primary footer-hero">
+        <div class="hero-body">
+    <div class="columns">
+        <div class="column footer-start">
+            <a href="#">
+                <p>
+                Small subtitle
+                </p>
+            </a>
+            <a href="#">
+                <p>
+                    Small subtitle
+                </p>
+            </a>
+            <a href="#">
+                <p>
+                    Small subtitle
+                </p>
+            </a>
+        </div>
+        <div>
+            <a href="#"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
+        </div>
+        <div class="column footer-end">
+            <a href="#">
+                <p>
+                    Small subtitle
+                </p>
+            </a>
+            <a href="#">
+                <p>
+                    Small subtitle
+                </p>
+            </a>
+            <a href="#">
+                <p>
+                    Small subtitle
+                </p>
+            </a>
+        </div>
+    </div>
+        </div>
+    </section>
 </footer>
 </body>
 </html>
