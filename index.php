@@ -43,7 +43,7 @@
         </div>
 
         <div>
-            <a href="#"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
+            <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
 
         <div class="navbar-end pr-4">
@@ -51,7 +51,7 @@
                 Register
             </a>
 
-            <a class="navbar-item">
+            <a class="navbar-item" href="login.php">
                 Login
             </a>
 
@@ -139,45 +139,58 @@
     <section class="hero is-small is-primary footer-hero">
         <div class="hero-body">
     <div class="columns">
-        <div class="column footer-start">
+        <div class="column footer-start is-one-third mt-6">
             <a href="#">
                 <p>
-                Small subtitle
+                    Informatie
                 </p>
             </a>
             <a href="#">
                 <p>
-                    Small subtitle
+                    Terms & conditions
                 </p>
             </a>
             <a href="#">
                 <p>
-                    Small subtitle
-                </p>
-            </a>
-        </div>
-        <div>
-            <a href="#"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
-        </div>
-        <div class="column footer-end">
-            <a href="#">
-                <p>
-                    Small subtitle
-                </p>
-            </a>
-            <a href="#">
-                <p>
-                    Small subtitle
-                </p>
-            </a>
-            <a href="#">
-                <p>
-                    Small subtitle
+                    Contact
                 </p>
             </a>
         </div>
+            <div class="column is-one-third has-text-centered">
+                <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
+            </div>
+
+
+
+            <div class="column footer-end mt-6 pt-5">
+                <a href="#">
+                    <p class="has-text-centered">
+                        <img src="images/fb-icon.png">
+                    </p>
+                </a>
+            </div>
+            <div class="column footer-end mt-6 pt-5">
+                <a href="#">
+                    <p class="has-text-centered">
+                        <img src="images/linkedin-icon.png">
+                    </p>
+                </a>
+            </div>
+        <div class="column footer-end mt-6 pt-5">
+            <a href="#">
+                <p class="has-text-centered">
+                    <img src="images/insta-icon.png">
+                </p>
+            </a>
+        </div>
+
+
+
+
+        </div>
+
     </div>
-        </div>
+
     </section>
 </footer>
 </body>

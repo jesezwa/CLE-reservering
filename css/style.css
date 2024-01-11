@@ -8,6 +8,7 @@ html {
     background-color: #ffffff;
 }
 
+/* Nav CSS */
 .navbar{
     background-color: #A7713F;
 }
@@ -27,6 +28,7 @@ a.navbar-item:hover {
     text-decoration: underline;
 }
 
+/* Home page header CSS */
 .hero.home-header {
     background-image: url("../images/wilma-home-header.png");
     background-color: transparent;
@@ -89,8 +91,63 @@ section .examples {
     border-radius: 20px;
 }
 
+/* footer CSS */
 footer .hero.footer-hero {
     background-color: #2B2B2B;
 }
 
+.footer-start p {
+    transition: all ease-in-out 300ms;
+}
+
+.footer-start p:hover {
+    margin-left: 5px;
+
+    transition: all ease-in-out 300ms;
+}
+
+.footer-end img:hover {
+    border-bottom: #ffffff 2px solid;
+}
+
+/* Login CSS */
+
+.login-hero.hero {
+    background-color: transparent;
+}
+
+.login-hero.hero p {
+    color: #2B2B2B;
+}
+
+.login-hero.hero.is-primary .title {
+    color: #2B2B2B;
+}
+
+
+
+.button.login-button.is-link
+{
+    background-color: #2B2B2B;
+}
+
+.button.login-button.is-link:hover
+{
+    background-color: #505050;
+
+}
+
+
+
+.make-account a{
+    text-decoration: none;
+    color: #505050;
+
+}
+
+.make-account a:hover {
+    text-decoration: underline;
+    color: #ba0000;
+
+}
 
