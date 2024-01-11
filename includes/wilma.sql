@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2024 at 12:26 PM
+-- Generation Time: Jan 11, 2024 at 02:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -60,10 +60,18 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(30) NOT NULL,
   `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
   `phonenumber` int(15) NOT NULL,
-  `user_created` date NOT NULL,
-  `user_updated` date NOT NULL
+  `user_updated` date NOT NULL,
+  `user_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `phonenumber`, `user_updated`, `user_created`) VALUES
+(1, '', '', '', '', 0, '0000-00-00', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -107,7 +115,7 @@ ALTER TABLE `availablities`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
