@@ -10,6 +10,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=GFS+Neohellenic:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Gentium+Plus:ital,wght@0,400;1,700&family=Young+Serif&display=swap" rel="stylesheet">
     <title>Wilma haakt</title>
 </head>
 
@@ -29,35 +32,30 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start pl-4">
             <a class="navbar-item">
-                Products
+                Informatie
             </a>
 
             <a class="navbar-item">
-                Projects
+                Reserveren
             </a>
 
-            <a class="navbar-item">
-                About us
-            </a>
 
         </div>
 
         <div>
-            <a class="navbar-item" href="#"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
+            <a href="#"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
 
-        <div class="navbar-end pl-4">
+        <div class="navbar-end pr-4">
             <a class="navbar-item">
-                Products
+                Register
             </a>
 
             <a class="navbar-item">
-                Projects
+                Login
             </a>
 
-            <a class="navbar-item">
-                About us
-            </a>
+
 
         </div>
     </div>
@@ -68,7 +66,11 @@
 
 </header>
 <main>
+    <section class="hero home-header is-large is-info">
+        <div class="hero-body">
 
+        </div>
+    </section>
 </main>
 <footer>
 
