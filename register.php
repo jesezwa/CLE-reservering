@@ -116,6 +116,23 @@
                             </div>
 
 
+                            <!-- Telefoon -->
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label" for="phonenumber">Telefoon</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control has-icons-left">
+                                            <input class="input" id="email" type="text" name="phonenumber" value="" />
+                                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                                        </div>
+                                        <p class="help is-danger">
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <!-- Email -->
