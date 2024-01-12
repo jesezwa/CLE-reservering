@@ -33,7 +33,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <!-- Navbar linker kant-->
         <div class="navbar-start pl-4">
-            <a class="navbar-item">
+            <a class="navbar-item" href="information.php">
                 Informatie
             </a>
 

@@ -178,3 +178,15 @@ a.make-account:hover {
     border-color: transparent;
     color: #fff;
 }
+
+/* informatie CSS */
+.notification.is-danger.info-section {
+    background-color: #2B2B2B;
+
+}
+
+.notification.is-danger.info-section p{
+
+    color: #fff;
+}
+
