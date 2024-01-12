@@ -5,7 +5,7 @@ body {
 }
 
 html {
-    background-color: #ffffff;
+    background-color: #D6D6D6;
 }
 
 /* Nav CSS */
@@ -115,11 +115,22 @@ footer .hero.footer-hero {
 .login-hero.hero {
     background-color: transparent;
 }
-/*
+
 .login-hero.hero p {
     color: #2B2B2B;
 }
-*/
+
+.login-hero.hero.is-primary a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current), .hero.is-primary strong {
+    color: #A7713F;
+}
+
+.hero.is-primary a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current):hover, .hero.is-primary strong {
+    color: #ffffff;
+}
+
+
+
+
 .login-hero.hero.is-primary .title {
     color: #2B2B2B;
 }
@@ -180,13 +191,20 @@ a.make-account:hover {
 }
 
 /* informatie CSS */
+.information-hero.hero{
+    background-color: transparent;
+
+}
 .notification.is-danger.info-section {
     background-color: #2B2B2B;
-
+    border-radius: 15px;
 }
 
 .notification.is-danger.info-section p{
-
     color: #fff;
+}
+
+.hero-body h2 {
+    color: #2B2B2B;
 }
 
