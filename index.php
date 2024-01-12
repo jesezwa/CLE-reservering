@@ -50,7 +50,7 @@
 
         <!-- Navbar rechter kant -->
         <div class="navbar-end pr-4">
-            <a class="navbar-item">
+            <a class="navbar-item" href="register.php">
                 Register
             </a>
 
