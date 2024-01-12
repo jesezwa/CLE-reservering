@@ -1,13 +1,12 @@
 <?php
+/** @var mysqli $db */
+require_once "includes/connection.php";
 // variablen opstellen voor errors en om de data terug te schrijven
 $firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = '';
 $firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_POST = '';
 
 // Wanneer er gepost is
 if (isset($_POST['submit'])) {
-    /** @var mysqli $db */
-    require_once "includes/connection.php";
-
     // If data valid
     if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['phoneNumber']) || empty($_POST['email']) || empty($_POST['password'])) {
         // als een veld leeg is
@@ -49,13 +48,10 @@ if (isset($_POST['submit'])) {
         $lastName = mysqli_real_escape_string($db, $_POST['lastName']);
         $phoneNumber = mysqli_real_escape_string($db, $_POST['phoneNumber']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
-        $password = mysqli_real_escape_string($db, $_POST['password']);
-
-        // create a secure password, with the PHP function password_hash()
-        $password_HASH = PASSWORD_HASH($_POST['password'], PASSWORD_DEFAULT);
+        $password = PASSWORD_HASH($_POST['password'], PASSWORD_DEFAULT);
 
         // query maken om data in database te zetten
-        $query = "INSERT INTO `users`(`id`, `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_updated`, `user_created`) VALUES ('', '$email','$password','$firstName','$lastName','$phoneNumber','','',)";
+        $query = "INSERT INTO `users`(`id`, `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_updated`, `user_created`) VALUES ('', '$email','$password','$firstName','$lastName','$phoneNumber','',NOW())";
         $result = mysqli_query($db, $query)
         //or die statement
         or die('Error ' . mysqli_error($db) . ' with query ' . $query);
@@ -66,6 +62,8 @@ if (isset($_POST['submit'])) {
         exit;
     }
 }
+// connectie sluiten
+mysqli_close($db)
 ?>
 
 <!doctype html>
@@ -153,11 +151,11 @@ if (isset($_POST['submit'])) {
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control has-icons-left">
-                                            <input class="input" id="firstName" type="text" name="firstName" value="" />
+                                            <input class="input" id="firstName" type="text" name="firstName" value="<?= $firstName_POST ?>" />
                                             <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                         </div>
                                         <p class="help is-danger">
-
+                                            <?= $firstNameError ?>
                                         </p>
                                     </div>
                                 </div>
@@ -171,11 +169,11 @@ if (isset($_POST['submit'])) {
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control has-icons-left">
-                                            <input class="input" id="lastName" type="text" name="lastName" value="" />
+                                            <input class="input" id="lastName" type="text" name="lastName" value="<?= $lastName_POST ?>" />
                                             <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                         </div>
                                         <p class="help is-danger">
-
+                                            <?= $lastNameError ?>
                                         </p>
                                     </div>
                                 </div>
@@ -190,11 +188,11 @@ if (isset($_POST['submit'])) {
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control has-icons-left">
-                                            <input class="input" id="email" type="text" name="phoneNumber" value="" />
+                                            <input class="input" id="phoneNumber" type="text" name="phoneNumber" value="<?= $phoneNumber_POST ?>" />
                                             <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                         </div>
                                         <p class="help is-danger">
-
+                                            <?= $phoneNumberError ?>
                                         </p>
                                     </div>
                                 </div>
@@ -209,11 +207,11 @@ if (isset($_POST['submit'])) {
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control has-icons-left">
-                                            <input class="input" id="email" type="text" name="email" value="" />
+                                            <input class="input" id="email" type="text" name="email" value="<?= $email_POST ?>" />
                                             <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                         </div>
                                         <p class="help is-danger">
-
+                                            <?= $emailError ?>
                                         </p>
                                     </div>
                                 </div>
@@ -231,7 +229,7 @@ if (isset($_POST['submit'])) {
                                             <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
                                         </div>
                                         <p class="help is-danger">
-
+                                            <?= $passwordError ?>
                                         </p>
 
                                     </div>

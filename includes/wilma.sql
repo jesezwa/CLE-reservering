@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2024 at 02:03 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Gegenereerd op: 12 jan 2024 om 13:46
+-- Serverversie: 10.4.28-MariaDB
+-- PHP-versie: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,14 +24,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appointments`
+-- Tabelstructuur voor tabel `appointments`
 --
 
 CREATE TABLE `appointments` (
   `id` int(10) UNSIGNED NOT NULL,
   `date` date NOT NULL,
   `user_id` int(11) NOT NULL,
-  `discription` varchar(1048) NOT NULL,
+  `discription` text NOT NULL,
   `product_created` date NOT NULL,
   `product_updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,7 +39,7 @@ CREATE TABLE `appointments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `availablities`
+-- Tabelstructuur voor tabel `availablities`
 --
 
 CREATE TABLE `availablities` (
@@ -52,7 +52,7 @@ CREATE TABLE `availablities` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabelstructuur voor tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -61,61 +61,61 @@ CREATE TABLE `users` (
   `password` varchar(30) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `phonenumber` int(15) NOT NULL,
-  `user_updated` date NOT NULL,
-  `user_created` date NOT NULL
+  `phone_number` int(15) NOT NULL,
+  `user_updated` datetime NOT NULL DEFAULT current_timestamp(),
+  `user_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Gegevens worden geëxporteerd voor tabel `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `phonenumber`, `user_updated`, `user_created`) VALUES
-(1, '', '', '', '', 0, '0000-00-00', '0000-00-00');
+INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_updated`, `user_created`) VALUES
+(6, 'pascalberens14@gmail.com', '$2y$10$Tg7DaacE1MdQzyw6iNaz6u7', 'Pascal', 'Berens', 655083173, '0000-00-00 00:00:00', '2024-01-12 13:45:38');
 
 --
--- Indexes for dumped tables
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `appointments`
+-- Indexen voor tabel `appointments`
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `availablities`
+-- Indexen voor tabel `availablities`
 --
 ALTER TABLE `availablities`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexen voor tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `appointments`
+-- AUTO_INCREMENT voor een tabel `appointments`
 --
 ALTER TABLE `appointments`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `availablities`
+-- AUTO_INCREMENT voor een tabel `availablities`
 --
 ALTER TABLE `availablities`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
