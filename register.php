@@ -1,5 +1,71 @@
 <?php
+// variablen opstellen voor errors en om de data terug te schrijven
+$firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = '';
+$firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_POST = '';
 
+// Wanneer er gepost is
+if (isset($_POST['submit'])) {
+    /** @var mysqli $db */
+    require_once "includes/connection.php";
+
+    // If data valid
+    if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['phoneNumber']) || empty($_POST['email']) || empty($_POST['password'])) {
+        // als een veld leeg is
+        if (empty($_POST['firstName'])) {
+            // laat error zien
+            $firstNameError = 'Voer je voornaam in';
+        } else {
+            // POST naar de form
+            $firstName_POST = $_POST['firstName'];
+        }
+        if (empty($_POST['lastName'])) {
+            // laat error zien
+            $lastNameError = 'Voer je achternaam in';
+        } else {
+            // POST naar de form
+            $lastName_POST = $_POST['lastName'];
+        }
+        if (empty($_POST['phoneNumber'])) {
+            // laat error zien
+            $phoneNumberError = 'Voer je telefoonnummer in';
+        } else {
+            // POST naar de form
+            $phoneNumber_POST = $_POST['phoneNumber'];
+        }
+        if (empty($_POST['email'])) {
+            // laat error zien
+            $emailError = 'Voer je email in';
+        } else {
+            // POST naar de form
+            $email_POST = $_POST['email'];
+        }
+        if (empty($_POST['password'])) {
+            // laat error zien
+            $passwordError = 'Voer je wachtwoord in';
+        }
+    } else {
+        // post in variabelen zetten
+        $firstName = mysqli_real_escape_string($db, $_POST['firstName']);
+        $lastName = mysqli_real_escape_string($db, $_POST['lastName']);
+        $phoneNumber = mysqli_real_escape_string($db, $_POST['phoneNumber']);
+        $email = mysqli_real_escape_string($db, $_POST['email']);
+        $password = mysqli_real_escape_string($db, $_POST['password']);
+
+        // create a secure password, with the PHP function password_hash()
+        $password_HASH = PASSWORD_HASH($_POST['password'], PASSWORD_DEFAULT);
+
+        // query maken om data in database te zetten
+        $query = "INSERT INTO `users`(`id`, `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_updated`, `user_created`) VALUES ('', '$email','$password','$firstName','$lastName','$phoneNumber','','',)";
+        $result = mysqli_query($db, $query)
+        //or die statement
+        or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
+        // Redirect to login page
+        header("Location: login.php");
+        // Exit the code
+        exit;
+    }
+}
 ?>
 
 <!doctype html>
@@ -116,15 +182,15 @@
                             </div>
 
 
-                            <!-- Telefoon -->
+                            <!-- Telefoonnummer -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal">
-                                    <label class="label" for="phonenumber">Telefoon</label>
+                                    <label class="label" for="phoneNumber">Telefoonnummer</label>
                                 </div>
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control has-icons-left">
-                                            <input class="input" id="email" type="text" name="phonenumber" value="" />
+                                            <input class="input" id="email" type="text" name="phoneNumber" value="" />
                                             <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                         </div>
                                         <p class="help is-danger">
