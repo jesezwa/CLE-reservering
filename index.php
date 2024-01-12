@@ -18,6 +18,7 @@
 
 
 <body>
+<!-- Homepagina, wanneer er niet is ingelogd -->
 <nav class="navbar" role="navigation" aria-label="main navigation">
 
     <div class="navbar-brand">
@@ -30,6 +31,7 @@
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
+        <!-- Navbar linker kant-->
         <div class="navbar-start pl-4">
             <a class="navbar-item">
                 Informatie
@@ -41,11 +43,12 @@
 
 
         </div>
-
+        <!-- Navbar logo in het midden -->
         <div>
             <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
 
+        <!-- Navbar rechter kant -->
         <div class="navbar-end pr-4">
             <a class="navbar-item">
                 Register
@@ -66,6 +69,7 @@
 
 </header>
 <main>
+    <!-- Header wilma -->
     <section class="hero home-header is-medium is-info">
         <div class="hero-body">
 
@@ -89,7 +93,7 @@
         </div>
     </section>
 
-
+    <!-- Sectie met voorbeelden van voormalige projecten -->
     <section class="section is-medium examples">
         <div class="columns">
             <div class="column">
@@ -135,10 +139,14 @@
 
     </section>
 </main>
+
+<!-- Homepagina, wanneer er wel is ingelogd komt nog hier -->
+
 <footer>
     <section class="hero is-small is-primary footer-hero">
         <div class="hero-body">
     <div class="columns">
+        <!-- Linker kant van de footer -->
         <div class="column footer-start is-one-third mt-6">
             <a href="#">
                 <p>
@@ -156,12 +164,13 @@
                 </p>
             </a>
         </div>
+        <!-- Logo in het midden -->
             <div class="column is-one-third has-text-centered">
                 <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
             </div>
 
 
-
+        <!-- Rechterkant van de footer met de sociale media -->
             <div class="column footer-end mt-6 pt-5">
                 <a href="#">
                     <p class="has-text-centered">

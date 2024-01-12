@@ -29,7 +29,9 @@
         </a>
     </div>
 
+
     <div id="navbarBasicExample" class="navbar-menu">
+        <!-- Navbar linker kant -->
         <div class="navbar-start pl-4">
             <a class="navbar-item">
                 Informatie
@@ -41,11 +43,12 @@
 
 
         </div>
-
+        <!-- Navbar logo in het midden -->
         <div>
             <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
 
+        <!-- Navbar rechter kant -->
         <div class="navbar-end pr-4">
             <a class="navbar-item">
                 Register
@@ -115,8 +118,9 @@
                     <button class="button login-button is-link is-fullwidth" type="submit" name="submit">Log in With Email</button>
                 </div>
             </div>
-            <div class="column has-text-centered">
-                <p> No account yet? <a class="make-account" href="register.php">Make one!</a> </p>
+            <div class="column make-account">
+                <p class="pl-6 ml-5 has-text-centered"> No account yet? <a class="make-account" href="register.php">Make one!</a></p>
+
             </div>
         </form>
 
@@ -130,6 +134,7 @@
     <section class="hero is-small is-primary footer-hero">
         <div class="hero-body">
             <div class="columns">
+                <!-- Linker kant van de footer -->
                 <div class="column footer-start is-one-third mt-6">
                     <a href="#">
                         <p>
@@ -147,12 +152,14 @@
                         </p>
                     </a>
                 </div>
+
+                <!-- Logo in het midden -->
                 <div class="column is-one-third has-text-centered">
                     <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
                 </div>
 
 
-
+                <!-- Rechterkant van de footer met de sociale media -->
                 <div class="column footer-end mt-6 pt-5">
                     <a href="#">
                         <p class="has-text-centered">

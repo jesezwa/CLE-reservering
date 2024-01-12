@@ -115,11 +115,11 @@ footer .hero.footer-hero {
 .login-hero.hero {
     background-color: transparent;
 }
-
+/*
 .login-hero.hero p {
     color: #2B2B2B;
 }
-
+*/
 .login-hero.hero.is-primary .title {
     color: #2B2B2B;
 }
@@ -139,15 +139,19 @@ footer .hero.footer-hero {
 
 
 
-.make-account a{
+.login-hero p{
     text-decoration: none;
+    color: #2B2B2B;
+    text-shadow: none;
+}
+
+.login-hero a {
     color: #505050;
 
 }
 
-.make-account a:hover {
+a.make-account:hover {
     text-decoration: underline;
     color: #ba0000;
-
 }
 
