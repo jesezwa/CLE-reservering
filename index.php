@@ -82,7 +82,7 @@
                             van Nederland
                         </p>
                             <div class="columns is-centered">
-                                <button class="button is-normal reserve-button">Start Shopping !</button>
+                                <button class="button is-normal reserve-button">Reserveer hier !</button>
                             </div>
                     </div>
                 </div>

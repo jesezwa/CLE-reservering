@@ -66,8 +66,9 @@
 </nav>
 
 <main>
-    <section class="hero is-large is-primary login-hero">
+    <section class="hero is-medium is-primary information-hero">
         <div class="hero-body">
+            <h2 class="has-text-centered is-size-1 pb-5">Informatie over mij en het bedrijf</h2>
             <div class="tile is-parent">
                 <article class="tile is-child notification is-danger info-section">
                     <div class="content">
@@ -83,6 +84,21 @@
                                     Elke dag brengt nieuwe creatieve avonturen en glimlachmomenten.
                                     Hier wil ik mijn haakpassie delen, inspiratie opdoen en misschien wat patronen uitwisselen.
                                     Laten we samen genieten van handgemaakte schoonheid!</p>
+                                <div class="columns">
+                                    <div class="column is-left">
+                                        Welkom bij wilma, het haakparadijs. Met passie
+                                        haak ik warmte in elke steek en breng ik mijn
+                                        liefde voor handwerk tot leven. Elk handgemaakt
+                                        stuk, van sjaals tot amigurumi, draagt een uniek
+                                        verhaal. Wilma is niet alleen een plek voor
+                                        prachtige creaties, maar ook voor het delen van
+                                        kennis en het verspreiden van de vreugde van het
+                                        haken. Ontdek de magie van handwerk en laat
+                                        wilma je inspireren. Bedankt voor het verkennen
+                                        van mijn wereld van draden en dromen - waar elk
+                                        stuk met liefde is gehaakt.
+                                    </div>
+                                </div>
                             </div>
                             <div class="column is-one-third">
                                 <figure class="image is-1by1">
