@@ -33,8 +33,8 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <!-- Navbar linker kant -->
         <div class="navbar-start pl-4">
-            <a class="navbar-item" href="information.php">
-                Informatie
+            <a class="navbar-item" href="index.php">
+                Home
             </a>
 
             <a class="navbar-item">
@@ -54,8 +54,8 @@
                 Register
             </a>
 
-            <a class="navbar-item" href="index.php">
-                Home
+            <a class="navbar-item" href="login.php">
+                Login
             </a>
 
 
@@ -66,66 +66,34 @@
 </nav>
 
 <main>
-    <section class="hero is-medium is-primary login-hero">
+    <section class="hero is-large is-primary login-hero">
         <div class="hero-body">
-    <div class="column">
-        <h2 class="title pl-6 has-text-centered">Log in</h2>
-    </div>
-    <section class="columns is-centered">
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-danger info-section">
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+                                <p>Over mij</p>
+                                <p>
+                                    Hey, ik ben Wilma, 34 jaar en verslaafd aan haken!
+                                    In mijn gezellige dorp ontdekte ik de magie van haken dankzij mijn oma.
+                                    Van kleurrijke dekens tot schattige amigurumi,
+                                    creatief bezig zijn met een haaknaald is mijn ontspanning.
+                                    Naast haken geniet ik van simpele geneugten zoals wandelingen en boeken.
+                                    Elke dag brengt nieuwe creatieve avonturen en glimlachmomenten.
+                                    Hier wil ik mijn haakpassie delen, inspiratie opdoen en misschien wat patronen uitwisselen.
+                                    Laten we samen genieten van handgemaakte schoonheid!</p>
+                            </div>
+                            <div class="column is-one-third">
+                                <figure class="image is-1by1">
+                                    <img src="images/wilma-foto.jpeg">
+                                </figure>
 
-        <form class="column is-6" action="" method="post">
-            <p class="help is-danger">
-
-            </p>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label" for="email">Email</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input" id="email" type="text" name="email" value="" />
-                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                            </div>
                         </div>
-                        <p class="help is-danger">
-
-                        </p>
                     </div>
-                </div>
+                </article>
             </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label" for="password">Password</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input" id="password" type="password" name="password"/>
-                            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
-                        </div>
-                        <p class="help is-danger">
-
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal"></div>
-                <div class="field-body">
-                    <button class="button login-button is-link is-fullwidth" type="submit" name="submit">Log in With Email</button>
-                </div>
-            </div>
-            <div class="column make-account">
-                <p class="pl-6 ml-5 has-text-centered"> No account yet? <a class="make-account" href="register.php">Make one!</a></p>
-
-            </div>
-        </form>
-
-
-    </section>
         </div>
     </section>
 </main>
