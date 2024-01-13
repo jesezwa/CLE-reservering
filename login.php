@@ -1,5 +1,74 @@
 <?php
+/** @var mysqli $db */
+require_once "includes/connection.php";
 
+// start sessie
+session_start();
+
+// variablen opstellen voor errors en om de data terug te schrijven
+$emailError = $passwordError = $logInError ='';
+$email_POST = '';
+
+// Is user logged in?
+
+// submit ingeklickt
+if (isset($_POST['submit'])) {
+    // als email niet is ingevoerd
+    if (empty($_POST['email'])) {
+        // laat error zien
+        $emailError = 'Voer je email in';
+    } else {
+        // bewaar om terug te posten en form
+        $email_POST = $_POST['email'];
+    }
+    // als wachtwoord niet is ingevoerd
+    if (empty($_POST['password'])) {
+        // laat error zien
+        $passwordError = 'Voer je wachtwoord in';
+    }
+
+    // Als alles is ingevuld
+    if (!empty($_POST['email']) && !empty($_POST['password'])) {
+        // bescherm de post naar db
+        $email = mysqli_real_escape_string($db, $_POST['email']);
+        // maak query select email
+        $query = "SELECT * FROM users WHERE email = '$email'";
+        $result = mysqli_query($db, $query)
+        //or die statement
+        or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
+        // bestaat email
+        if (mysqli_num_rows($result) > 0) {
+            // haal user op
+            $user_row = mysqli_fetch_assoc($result);
+
+            // haal gehashte wachtwoord op
+            $hashed_password = $user_row['password'];
+
+            // Check if the provided password matches the stored password in the database
+            if (password_verify($_POST['password'], $hashed_password)) {
+                // Store the user in the session
+                $_SESSION['user_id'] = $user_row['id'];
+                // Redirect to secure page
+                header("Location: index.php");
+                // exit
+                exit;
+            }
+            // Credentials not valid
+            else {
+                //error incorrect log in
+                $logInError = 'De combinatie van de mail en wachtwoord is onjuist.';
+            }
+        }
+        // User doesn't exist
+        else {
+            //error incorrect log in
+            $logInError = 'De combinatie van de mail en wachtwoord is onjuist.';
+        }
+    }
+}
+// connectie sluiten
+mysqli_close($db);
 ?>
 
 <!doctype html>
@@ -75,7 +144,7 @@
 
         <form class="column is-6" action="" method="post">
             <p class="help is-danger">
-
+                <?= $logInError ?>
             </p>
 
             <div class="field is-horizontal">
@@ -85,11 +154,11 @@
                 <div class="field-body">
                     <div class="field">
                         <div class="control has-icons-left">
-                            <input class="input" id="email" type="text" name="email" value="" />
+                            <input class="input" id="email" type="text" name="email" value="<?= $email_POST ?>" />
                             <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                         </div>
                         <p class="help is-danger">
-
+                            <?= $emailError ?>
                         </p>
                     </div>
                 </div>
@@ -106,7 +175,7 @@
                             <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
                         </div>
                         <p class="help is-danger">
-
+                            <?= $passwordError ?>
                         </p>
                     </div>
                 </div>
