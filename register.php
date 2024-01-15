@@ -1,6 +1,10 @@
 <?php
 /** @var mysqli $db */
 require_once "includes/connection.php";
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // variablen opstellen voor errors en om de data terug te schrijven
 $firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = '';
 $firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_POST = '';

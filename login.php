@@ -2,8 +2,6 @@
 /** @var mysqli $db */
 require_once "includes/connection.php";
 
-print_r();
-
 // start sessie
 session_start();
 

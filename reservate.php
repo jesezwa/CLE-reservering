@@ -66,128 +66,54 @@
 </nav>
 
 <main>
-    <section class="hero is-medium is-primary register-hero">
-        <div class="hero-body">
-            <section class="section">
-                <div class="container content">
+    <div class="section is-medium">
+    <div class="columns">
+        <div class="column">
+            <h1 class="has-text-centered is-size-3 mb-4">Maak een afspraak</h1>
 
-
-                    <div class="column">
-                        <h2 class="title pl-6 has-text-centered">Register With Email</h2>
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label">Subject</label>
+                    <div class="control">
+                        <div class="select">
+                            <select>
+                                <option>Select dropdown</option>
+                                <option>With options</option>
+                            </select>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">Subject</label>
+                    <div class="control">
+                        <div class="select">
+                            <select>
+                                <option>Select dropdown</option>
+                                <option>With options</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">Subject</label>
+                    <div class="control">
+                        <div class="select">
+                            <select>
+                                <option>Select dropdown</option>
+                                <option>With options</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <section class="columns is-centered">
-                        <form class="column is-6 register-form" action="" method="post">
-
-                            <!-- First name -->
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label" for="firstName">First name</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control has-icons-left">
-                                            <input class="input" id="firstName" type="text" name="firstName" value="" />
-                                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
-                                        </div>
-                                        <p class="help is-danger">
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Last name -->
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label" for="lastName">Last name</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control has-icons-left">
-                                            <input class="input" id="lastName" type="text" name="lastName" value="" />
-                                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
-                                        </div>
-                                        <p class="help is-danger">
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Telefoonnummer -->
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label" for="phoneNumber">Telefoonnummer</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control has-icons-left">
-                                            <input class="input" id="email" type="text" name="phoneNumber" value="" />
-                                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
-                                        </div>
-                                        <p class="help is-danger">
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Email -->
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label" for="email">Email</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control has-icons-left">
-                                            <input class="input" id="email" type="text" name="email" value="" />
-                                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
-                                        </div>
-                                        <p class="help is-danger">
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Password -->
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label" for="password">Password</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control has-icons-left">
-                                            <input class="input" id="password" type="password" name="password" value=""/>
-                                            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
-                                        </div>
-                                        <p class="help is-danger">
-
-                                        </p>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Submit -->
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal"></div>
-                                <div class="field-body">
-
-                                    <button class="button is-link is-fullwidth register-button" type="submit" name="submit">Register</button>
-
-
-                                </div>
-                            </div>
-
-                        </form>
-
-                    </section>
-            </section>
+        </div>
+    </div>
 </main>
 
 <footer>
@@ -249,7 +175,8 @@
 
         </div>
 
-    </section>
+
+
 </footer>
 </body>
 </html>
