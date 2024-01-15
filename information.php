@@ -1,4 +1,11 @@
 <?php
+/** @var mysqli $db */
+require_once "includes/connection.php";
+
+// start sessie
+session_start();
+
+$user_id = $_SESSION['user_id'];
 
 ?>
 
@@ -16,8 +23,13 @@
     <title>Wilma haakt</title>
 </head>
 
+<?php if (isset($user_id)) { ?>
+
+
+
 
 <body>
+
 <nav class="navbar" role="navigation" aria-label="main navigation">
 
     <div class="navbar-brand">
@@ -176,4 +188,7 @@
     </section>
 </footer>
 </body>
+
+<?php } else header("Location: login.php"); ?>
+
 </html>

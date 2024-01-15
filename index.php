@@ -1,4 +1,15 @@
 <?php
+/** @var mysqli $db */
+require_once 'includes/connection.php';
+
+session_start();
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+   header('Location: index.php');
+}
 
 ?>
 
@@ -48,7 +59,13 @@
             <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
 
+
         <!-- Navbar rechter kant -->
+        <?php if(isset($user_id)) {?>
+            <form action="" method="post">
+                <input type="submit" name="logout" value="Logout">
+            </form>
+        <?php } else { ?>
         <div class="navbar-end pr-4">
             <a class="navbar-item" href="register.php">
                 Register
@@ -57,6 +74,8 @@
             <a class="navbar-item" href="login.php">
                 Login
             </a>
+
+            <?php }?>
 
 
 
