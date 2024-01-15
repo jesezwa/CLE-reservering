@@ -7,6 +7,8 @@ session_start();
 
 $user_id = $_SESSION['user_id'];
 
+print_r();
+
 ?>
 
 <!doctype html>
