@@ -2,6 +2,10 @@
 /** @var mysqli $db */
 require_once "includes/connection.php";
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
 // start sessie
 session_start();
 

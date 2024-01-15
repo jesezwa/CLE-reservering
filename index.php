@@ -37,7 +37,7 @@
                 Informatie
             </a>
 
-            <a class="navbar-item">
+            <a class="navbar-item" href="reservate.php">
                 Reserveren
             </a>
 
