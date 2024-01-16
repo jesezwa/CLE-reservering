@@ -11,6 +11,11 @@ require_once 'includes/connection.php';
 require_once 'includes/secure.php';
 //Datum select
 
+
+
+
+
+
 // Stuur datum naar de database
 
 ?>
