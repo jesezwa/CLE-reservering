@@ -1,5 +1,22 @@
 <?php
 
+//Connectie leggen met de database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 
 <!doctype html>
