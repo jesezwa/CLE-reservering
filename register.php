@@ -2,6 +2,7 @@
 <?php
 /** @var mysqli $db */
 require_once "includes/connection.php";
+require_once 'includes/secure.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // variablen opstellen voor errors en om de data terug te schrijven

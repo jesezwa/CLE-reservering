@@ -3,7 +3,7 @@
 //Connectie leggen met de database
 
 
-
+require_once 'includes/secure.php';
 
 
 
