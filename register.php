@@ -1,14 +1,12 @@
+
 <?php
 /** @var mysqli $db */
 require_once "includes/connection.php";
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
 // variablen opstellen voor errors en om de data terug te schrijven
 $firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = '';
 $firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_POST = '';
-
 // Wanneer er gepost is
 if (isset($_POST['submit'])) {
     // If data valid
@@ -53,13 +51,11 @@ if (isset($_POST['submit'])) {
         $phoneNumber = mysqli_real_escape_string($db, $_POST['phoneNumber']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
         $password = PASSWORD_HASH($_POST['password'], PASSWORD_DEFAULT);
-
         // query maken om data in database te zetten
-        $query = "INSERT INTO `users`(`id`, `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_updated`, `user_created`) VALUES ('', '$email','$password','$firstName','$lastName','$phoneNumber','',NOW())";
+        $query = "INSERT INTO `users`( `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_created`) VALUES ( '$email','$password','$firstName','$lastName','$phoneNumber',NOW())";
         $result = mysqli_query($db, $query)
         //or die statement
         or die('Error ' . mysqli_error($db) . ' with query ' . $query);
-
         // Redirect to login page
         header("Location: login.php");
         // Exit the code
@@ -69,7 +65,6 @@ if (isset($_POST['submit'])) {
 // connectie sluiten
 mysqli_close($db)
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -84,10 +79,8 @@ mysqli_close($db)
     <title>Wilma haakt</title>
 </head>
 
-
 <body>
 <nav class="navbar" role="navigation" aria-label="main navigation">
-
     <div class="navbar-brand">
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
            data-target="navbarBasicExample">
@@ -97,56 +90,44 @@ mysqli_close($db)
         </a>
     </div>
 
-
     <div id="navbarBasicExample" class="navbar-menu">
         <!-- Navbar linker kant -->
         <div class="navbar-start pl-4">
             <a class="navbar-item" href="information.php">
                 Informatie
             </a>
-
             <a class="navbar-item">
                 Reserveren
             </a>
-
 
         </div>
         <!-- Navbar logo in het midden -->
         <div>
             <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
-
         <!-- Navbar rechter kant -->
         <div class="navbar-end pr-4">
             <a class="navbar-item" href="index.php">
                 Home
             </a>
-
             <a class="navbar-item">
                 Login
             </a>
 
-
-
         </div>
     </div>
-
 </nav>
-
 <main>
     <section class="hero is-medium is-primary register-hero">
         <div class="hero-body">
             <section class="section">
                 <div class="container content">
 
-
                     <div class="column">
                         <h2 class="title pl-6 has-text-centered">Register With Email</h2>
                     </div>
-
                     <section class="columns is-centered">
                         <form class="column is-6 register-form" action="" method="post">
-
                             <!-- First name -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal">
@@ -164,7 +145,6 @@ mysqli_close($db)
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Last name -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal">
@@ -182,7 +162,6 @@ mysqli_close($db)
                                     </div>
                                 </div>
                             </div>
-
 
                             <!-- Telefoonnummer -->
                             <div class="field is-horizontal">
@@ -202,7 +181,6 @@ mysqli_close($db)
                                 </div>
                             </div>
 
-
                             <!-- Email -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal">
@@ -220,7 +198,6 @@ mysqli_close($db)
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Password -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal">
@@ -235,29 +212,22 @@ mysqli_close($db)
                                         <p class="help is-danger">
                                             <?= $passwordError ?>
                                         </p>
-
                                     </div>
                                 </div>
                             </div>
-
 
                             <!-- Submit -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal"></div>
                                 <div class="field-body">
-
                                     <button class="button is-link is-fullwidth register-button" type="submit" name="submit">Register</button>
-
 
                                 </div>
                             </div>
-
                         </form>
-
                     </section>
-    </section>
+            </section>
 </main>
-
 <footer>
     <section class="hero is-small is-primary footer-hero">
         <div class="hero-body">
@@ -280,12 +250,10 @@ mysqli_close($db)
                         </p>
                     </a>
                 </div>
-
                 <!-- Logo in het midden -->
                 <div class="column is-one-third has-text-centered">
                     <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
                 </div>
-
 
                 <!-- Rechterkant van de footer met de sociale media -->
                 <div class="column footer-end mt-6 pt-5">
@@ -311,13 +279,10 @@ mysqli_close($db)
                 </div>
 
 
-
-
             </div>
-
         </div>
-
     </section>
 </footer>
 </body>
 </html>
+ 
