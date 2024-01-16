@@ -133,7 +133,7 @@ $user_id = $_SESSION['user_id'];
             <div class="columns">
                 <!-- Linker kant van de footer -->
                 <div class="column footer-start is-one-third mt-6">
-                    <a href="#">
+                    <a href="information.php">
                         <p>
                             Informatie
                         </p>
