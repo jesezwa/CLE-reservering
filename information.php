@@ -1,4 +1,5 @@
 <?php
+// connectie database
 /** @var mysqli $db */
 require_once "includes/connection.php";
 
@@ -6,8 +7,6 @@ require_once "includes/connection.php";
 session_start();
 
 $user_id = $_SESSION['user_id'];
-
-print_r();
 
 ?>
 

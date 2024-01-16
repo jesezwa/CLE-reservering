@@ -5,7 +5,6 @@ require_once 'includes/connection.php';
 session_start();
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-
 if (isset($_POST['logout'])) {
     session_destroy();
    header('Location: index.php');
