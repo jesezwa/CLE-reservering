@@ -127,8 +127,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="columns">
+                    <div class="column is-centered">
+                        <div class="field">
+                            <label class="label">Message</label>
+                            <div class="control">
+                                <textarea class="textarea" placeholder="Textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+        </div>
+        </div>
         </div>
     </div>
 </main>
