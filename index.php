@@ -1,15 +1,15 @@
 <?php
+session_start();
+
 /** @var mysqli $db */
 require_once 'includes/connection.php';
 
-session_start();
+echo "Admin status: " . $_SESSION['admin'];
+
+
+
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-
-if (isset($_POST['logout'])) {
-    session_destroy();
-   header('Location: index.php');
-}
-
+$admin = isset($_SESSION['admin']) ? $_SESSION['admin'] : 0;
 ?>
 
 <!doctype html>
@@ -47,11 +47,17 @@ if (isset($_POST['logout'])) {
                 Informatie
             </a>
 
-            <a class="navbar-item" href="reservate.php">
-                Reserveren
-            </a>
+            <?php if ($admin) {?>
+                <a class="navbar-item" href="availblities.php">
+                    beschikbaarheid
+                </a>
 
+            <?php } else { ?>
+                <a class="navbar-item" href="reservate.php">
+                    Reserveren
+                </a>
 
+            <?php } ?>
         </div>
         <!-- Navbar logo in het midden -->
         <div>
@@ -60,7 +66,7 @@ if (isset($_POST['logout'])) {
 
 
         <!-- Navbar rechter kant -->
-        <?php if(isset($user_id)) {?>
+        <?php if(isset($admin, $user_id)) {?>
             <form action="" method="post">
                 <input type="submit" name="logout" value="Logout">
             </form>
@@ -75,9 +81,6 @@ if (isset($_POST['logout'])) {
             </a>
 
             <?php }?>
-
-
-
         </div>
     </div>
 
@@ -222,3 +225,4 @@ if (isset($_POST['logout'])) {
 </footer>
 </body>
 </html>
+

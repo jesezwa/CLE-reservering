@@ -49,6 +49,7 @@ if (isset($_POST['submit'])) {
             if (password_verify($_POST['password'], $hashed_password)) {
                 // Store the user in the session
                 $_SESSION['user_id'] = $user_row['id'];
+                $_SESSION['admin'] = $user_row['admin'];
                 // Redirect to secure page
                 header("Location: index.php");
                 // exit
