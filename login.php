@@ -1,7 +1,7 @@
 <?php
 /** @var mysqli $db */
 require_once "includes/connection.php";
-
+require_once 'includes/secure.php';
 // start sessie
 session_start();
 
@@ -205,7 +205,7 @@ mysqli_close($db);
             <div class="columns">
                 <!-- Linker kant van de footer -->
                 <div class="column footer-start is-one-third mt-6">
-                    <a href="#">
+                    <a href="information.php">
                         <p>
                             Informatie
                         </p>

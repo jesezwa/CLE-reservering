@@ -50,6 +50,9 @@ if (isset($_POST['logout'])) {
             <a class="navbar-item" href="reservate.php">
                 Reserveren
             </a>
+            <a class="navbar-item" href="availblities.php">
+                beschikbaarheid
+            </a>
 
 
         </div>
@@ -73,6 +76,8 @@ if (isset($_POST['logout'])) {
             <a class="navbar-item" href="login.php">
                 Login
             </a>
+
+
 
             <?php }?>
 
@@ -166,7 +171,7 @@ if (isset($_POST['logout'])) {
     <div class="columns">
         <!-- Linker kant van de footer -->
         <div class="column footer-start is-one-third mt-6">
-            <a href="#">
+            <a href="information.php">
                 <p>
                     Informatie
                 </p>

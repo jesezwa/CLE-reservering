@@ -2,6 +2,7 @@
 <?php
 /** @var mysqli $db */
 require_once "includes/connection.php";
+require_once 'includes/secure.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // variablen opstellen voor errors en om de data terug te schrijven
@@ -234,7 +235,7 @@ mysqli_close($db)
             <div class="columns">
                 <!-- Linker kant van de footer -->
                 <div class="column footer-start is-one-third mt-6">
-                    <a href="#">
+                    <a href="information.php">
                         <p>
                             Informatie
                         </p>
