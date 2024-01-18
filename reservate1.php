@@ -1,6 +1,41 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 //Connectie leggen met de database
+
+/** @var mysqli $db */
+require_once "includes/connection.php";
+
+
+$date = '';
+
+if(isset($_POST['submit'])) {
+    $errorMessage = [];
+
+    $date = $_POST['date'];
+
+
+
+    if ($date == '') {
+        $errorMessage['date'] = "Vul alsjeblieft een datum in";
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -31,6 +66,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=GFS+Neohellenic:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Gentium+Plus:ital,wght@0,400;1,700&family=Young+Serif&display=swap" rel="stylesheet">
     <title>Wilma haakt</title>
+    <script src="datepicker.js"></script>
 </head>
 
 
@@ -83,69 +119,57 @@
 </nav>
 
 <main>
-    <div class="section is-medium">
-    <div class="columns">
-        <div class="column">
-            <h1 class="has-text-centered is-size-3 mb-4">Maak een afspraak</h1>
+    <section class="section">
+        <div class="container content">
 
-        <div class="columns">
+
             <div class="column">
-                <div class="field">
-                    <label class="label">Subject</label>
-                    <div class="control">
-                        <div class="select">
-                            <select>
-                                <option>Select dropdown</option>
-                                <option>With options</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                <h2 class="title pl-6 has-text-centered">Kies een datum voor je afspraak</h2>
             </div>
-            <div class="column">
-                <div class="field">
-                    <label class="label">Subject</label>
-                    <div class="control">
-                        <div class="select">
-                            <select>
-                                <option>Select dropdown</option>
-                                <option>With options</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="field">
-                    <label class="label">Subject</label>
-                    <div class="control">
-                        <div class="select">
-                            <select>
-                                <option>Select dropdown</option>
-                                <option>With options</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column is-centered">
-                        <div class="field">
-                            <label class="label">Message</label>
-                            <div class="control">
-                                <textarea class="textarea" placeholder="Textarea"></textarea>
+
+            <section class="columns is-centered">
+                <form class="column is-6 register-form" action="reservate2.php" method="post">
+
+                    <!-- Datum -->
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input class="input" id="date" type="date" name="date" value="<?php if(isset($date)) { echo $date; } ?>" onchange= reload() />
+                                    <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <p class="help is-danger">
+                                    <?php
+                                    if (isset($errorMessage['date'])) {
+                                        echo $errorMessage['date'];
+                                    }
+                                    ?>
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-        </div>
-        </div>
-        </div>
-    </div>
+                    <!-- Tijdslot -->
+
+
+                    <!-- Submit -->
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal"></div>
+                        <div class="field-body">
+
+                            <button class="button is-link is-fullwidth" type="submit" name="submit">Maak afspraak</button>
+
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </section>
+
 </main>
 
-<footer>
+<footer >
     <section class="hero is-small is-primary footer-hero">
         <div class="hero-body">
             <div class="columns">
