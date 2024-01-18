@@ -1,22 +1,56 @@
 <?php
-
-//Checken of de admin is ingelogd met user_id
-
-//Admin sessie beginnen
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 //Connectie leggen met de database
+
 /** @var mysqli $db */
-require_once 'includes/connection.php';
-//Secure maken
-require_once 'includes/secure.php';
-//Datum select
+require_once "includes/connection.php";
+
+$date = $_POST['date'];
 
 
-//Begin tijdstip select
 
-//eind tijdstip select
+$query = "SELECT * FROM availablities WHERE date = '$date'";
+print_r($query);
 
-// Stuur datum en tijdstippen naar de database
+
+$result = mysqli_query($db, $query)
+or die('Error '.mysqli_error($db).' with query '.$query);
+
+
+
+
+
+$beginTimes = [];  // Initialize an array to store start times
+$availabilities = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $availabilities[] = $row;
+
+    $beginTimes[] = $row['timestamp_begin'];
+
+}
+echo '<br />';
+print_r($availabilities);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>
@@ -33,6 +67,7 @@ require_once 'includes/secure.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=GFS+Neohellenic:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Gentium+Plus:ital,wght@0,400;1,700&family=Young+Serif&display=swap" rel="stylesheet">
     <title>Wilma haakt</title>
+    <script src="datepicker.js"></script>
 </head>
 
 
@@ -85,93 +120,46 @@ require_once 'includes/secure.php';
 </nav>
 
 <main>
+    <div class="field is-horizontal">
+        <div class="field-body">
+            <div class="field">
+                <label class="label">Begin Tijd:</label>
+                <div class="control">
+                    <?php if (isset($beginTime)){ echo $beginTime;}
+                    else {'Er zijn geen tijden beschikbaar voor deze dag';} ?>
 
-
-
-    <!-- ... Other HTML code ... -->
-
-    <form method="post" action="includes/process_form.php">
-        <div class="columns">
-            <div class="column">
-                <div class="field">
-                    <label class="label">Datum</label>
-                    <div class="control">
-                        <input class="input" type="date" name="selected_date">
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="field">
-                    <label class="label">Begintijd</label>
-                    <div class="control">
-                        <div class="select">
-                            <select name="selected_begin_time">
-                                <option>Selecteer een begin tijd</option>
-                                <option>9:00:00</option>
-                                <option>10:00:00</option>
-                                <option>11:00:00</option>
-                                <option>12:00:00</option>
-                                <option>13:00:00</option>
-                                <option>14:00:00</option>
-                                <option>15:00:00</option>
-                                <option>16:00:00</option>
-                                <option>17:00:00</option>
-                                <option>18:00:00</option>
-                                <option>19:00:00</option>
-                                <option>20:00:00</option>
-                                <option>21:00:00</option>
-                                <option>22:00:00</option>
-
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="field">
-                    <label class="label">Eindtijd</label>
-                    <div class="control">
-                        <div class="select">
-                            <select name="selected_end_time">
-                                <option>Selecteer een begin tijd</option>
-                                <option>10:00:00</option>
-                                <option>11:00:00</option>
-                                <option>12:00:00</option>
-                                <option>13:00:00</option>
-                                <option>14:00:00</option>
-                                <option>15:00:00</option>
-                                <option>16:00:00</option>
-                                <option>17:00:00</option>
-                                <option>18:00:00</option>
-                                <option>19:00:00</option>
-                                <option>20:00:00</option>
-                                <option>21:00:00</option>
-                                <option>22:00:00</option>
-                                <option>23:00:00</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Submit button -->
-        <div class="field is-horizontal">
-            <div class="field-label is-normal"></div>
-            <div class="field-body">
-                <button class="button login-button is-link is-fullwidth has-text-centered" type="submit" name="submit">Verzenden</button>
+    </div>
+    <div class="field is-horizontal">
+        <div class="field-body">
+            <div class="field">
+                <label class="label">Eind Tijd:</label>
+                <div class="control">
+                    <?php echo isset($endTime) ? $endTime : 'Geen beschikbaarheid'; ?>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
+
+    <div class="select">
+        <select>
+            <?php foreach ($availabilities as $availability) { ?>
+                <option><?= $availability['timestamp_begin'] ?> - <?= $availability['timestamp_end'] ?> </option>
+            <?php }?>
+
+        </select>
+    </div>
 </main>
 
-<footer>
+<footer >
     <section class="hero is-small is-primary footer-hero">
         <div class="hero-body">
             <div class="columns">
                 <!-- Linker kant van de footer -->
                 <div class="column footer-start is-one-third mt-6">
-                    <a href="information.php">
+                    <a href="#">
                         <p>
                             Informatie
                         </p>

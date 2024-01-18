@@ -1,28 +1,25 @@
 <?php
 
+require_once 'connection.php';
+
 // Check if the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Retrieve form data
-    $selectedMonth = $_POST['selected_month'] ?? ''; // Use the null coalescing operator to handle undefined keys
-    $selectedDay = $_POST['selected_day'] ?? '';
+    $selectedDate = $_POST['selected_date'] ?? '';
     $selectedBeginTime = $_POST['selected_begin_time'] ?? '';
     $selectedEndTime = $_POST['selected_end_time'] ?? '';
-    $selectedYear = 2024;
+
+    // Combine year, month, and day into one variable
 
 
 
-    // Combine month, day, and year into one variable
-    $selectedDate = $selectedYear . '-' . $selectedMonth . '-' . $selectedDay;
-    echo $selectedDate;
-    echo $selectedDay;
-    echo $selectedMonth;
+    // Format the time values if needed (assuming H:i:s format)
 
-    // Connect to the database
-    require_once 'connection.php';
-
+print_r($selectedDate);
+print_r($selectedBeginTime);
+    print_r($selectedEndTime);
     // Your SQL query to insert data into the database
-
-     $query = "INSERT INTO `availablities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
+    $query = "INSERT INTO `availablities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
 
     // Execute the query
     $result = mysqli_query($db, $query);
@@ -37,21 +34,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Close the database connection
     mysqli_close($db);
 }
+
 ?>
-
-
-
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-</body>
-</html>

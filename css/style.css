@@ -92,6 +92,11 @@ section .examples {
 }
 
 /* footer CSS */
+footer {
+    position: sticky;
+
+}
+
 footer .hero.footer-hero {
     background-color: #2B2B2B;
 }
@@ -209,3 +214,4 @@ a.make-account:hover {
 }
 
 /* reserveren CSS */
+

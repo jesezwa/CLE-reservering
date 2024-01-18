@@ -47,7 +47,7 @@ if (isset($_POST['logout'])) {
                 Informatie
             </a>
 
-            <a class="navbar-item" href="reservate.php">
+            <a class="navbar-item" href="reservate1.php">
                 Reserveren
             </a>
             <a class="navbar-item" href="availblities.php">
@@ -171,7 +171,7 @@ if (isset($_POST['logout'])) {
                     Informatie
                 </p>
             </a>
-            <a href="#">
+            <a href="terms%20&%20conditions.php">
                 <p>
                     Terms & conditions
                 </p>
