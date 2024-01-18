@@ -88,192 +88,81 @@ require_once 'includes/secure.php';
 
 
 
-    <main>
-        <div class="section is-medium">
-            <div class="columns">
-                <div class="column">
-                    <h1 class="has-text-centered is-size-3 mb-4">Maak een afspraak</h1>
+    <!-- ... Other HTML code ... -->
 
-
-                    <form method="post" action="includes/process_form.php">
-                        <div class="columns">
-                            <div class="column">
-                                <div class="field">
-                                    <label class="label">Maand</label>
-                                    <div class="control">
-                                        <div class="select">
-                                            <select name="selected_month">
-                                                <option>Selecteer een maand</option>
-                                                <option>01</option>
-                                                <option>02</option>
-                                                <option>03</option>
-                                                <option>04</option>
-                                                <option>05</option>
-                                                <option>06</option>
-                                                <option>07</option>
-                                                <option>08</option>
-                                                <option>09</option>
-                                                <option>10</option>
-                                                <option>11</option>
-                                                <option>12</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="columns">
-                                <div class="column">
-                                    <div class="field">
-                                        <label class="label">Dag</label>
-                                        <div class="control">
-                                            <div class="select">
-                                                <select name="selected_month">
-                                                    <option>Selecteer een dag</option>
-                                                    <option>01</option>
-                                                    <option>02</option>
-                                                    <option>03</option>
-                                                    <option>04</option>
-                                                    <option>05</option>
-                                                    <option>06</option>
-                                                    <option>07</option>
-                                                    <option>08</option>
-                                                    <option>09</option>
-                                                    <option>10</option>
-                                                    <option>11</option>
-                                                    <option>12</option>
-                                                    <option>13</option>
-                                                    <option>14</option>
-                                                    <option>15</option>
-                                                    <option>16</option>
-                                                    <option>17</option>
-                                                    <option>18</option>
-                                                    <option>19</option>
-                                                    <option>20</option>
-                                                    <option>21</option>
-                                                    <option>22</option>
-                                                    <option>23</option>
-                                                    <option>24</option>
-                                                    <option>25</option>
-                                                    <option>26</option>
-                                                    <option>27</option>
-                                                    <option>28</option>
-                                                    <option>29</option>
-                                                    <option>20</option>
-                                                    <option>31</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                                <div class="columns">
-                                    <div class="column">
-                                        <div class="field">
-                                            <label class="label">Begintijd</label>
-                                            <div class="control">
-                                                <div class="select">
-                                                    <select name="selected_month">
-                                                        <option>Selecteer een begin tijd</option>
-                                                        <option>10:00:00</option>
-                                                        <option>11:00:00</option>
-                                                        <option>12:00:00</option>
-                                                        <option>13:00:00</option>
-                                                        <option>14:00:00</option>
-                                                        <option>15:00:00</option>
-                                                        <option>16:00:00</option>
-                                                        <option>17:00:00</option>
-                                                        <option>18:00:00</option>
-                                                        <option>19:00:00</option>
-                                                        <option>20:00:00</option>
-                                                        <option>21:00:00</option>
-                                                        <option>22:00:00</option>
-                                                        <option>23:00:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            <div class="column">
-                                <div class="field">
-                                    <label class="label">Eindtijd</label>
-                                    <div class="control">
-                                        <div class="select">
-                                            <select name="selected_end_time">
-                                                <option>Selecteer een eindtijd</option>
-                                                <option>10:00:00</option>
-                                                <option>11:00:00</option>
-                                                <option>12:00:00</option>
-                                                <option>13:00:00</option>
-                                                <option>14:00:00</option>
-                                                <option>15:00:00</option>
-                                                <option>16:00:00</option>
-                                                <option>17:00:00</option>
-                                                <option>18:00:00</option>
-                                                <option>19:00:00</option>
-                                                <option>20:00:00</option>
-                                                <option>21:00:00</option>
-                                                <option>22:00:00</option>
-                                                <option>23:00:00</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        <!-- Submit button -->
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal"></div>
-                            <div class="field-body">
-                                <button class="button login-button is-link is-fullwidth has-text-centered" type="submit" name="submit">Verzenden</button>
-                            </div>
-                        </div>
-                    </form>
+    <form method="post" action="includes/process_form.php">
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label">Datum</label>
+                    <div class="control">
+                        <input class="input" type="date" name="selected_date">
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+            <div class="column">
+                <div class="field">
+                    <label class="label">Begintijd</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="selected_begin_time">
+                                <option>Selecteer een begin tijd</option>
+                                <option>9:00:00</option>
+                                <option>10:00:00</option>
+                                <option>11:00:00</option>
+                                <option>12:00:00</option>
+                                <option>13:00:00</option>
+                                <option>14:00:00</option>
+                                <option>15:00:00</option>
+                                <option>16:00:00</option>
+                                <option>17:00:00</option>
+                                <option>18:00:00</option>
+                                <option>19:00:00</option>
+                                <option>20:00:00</option>
+                                <option>21:00:00</option>
+                                <option>22:00:00</option>
 
-    <!-- ... Your existing HTML code ... -->
-
-
-
-
-    </select>
-                                </div>
-                                <div class="field is-horizontal">
-                                    <div class="field-label is-normal"></div>
-                                    <div class="field-body">
-                                        <button class="button login-button is-link is-fullwidth has-text-centered" type="submit" name="submit">Verzenden</button>
-                                    </div> <option>Selecteer een dag</option>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            </div>
+                            </select>
                         </div>
                     </div>
-
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">Eindtijd</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="selected_end_time">
+                                <option>Selecteer een begin tijd</option>
+                                <option>10:00:00</option>
+                                <option>11:00:00</option>
+                                <option>12:00:00</option>
+                                <option>13:00:00</option>
+                                <option>14:00:00</option>
+                                <option>15:00:00</option>
+                                <option>16:00:00</option>
+                                <option>17:00:00</option>
+                                <option>18:00:00</option>
+                                <option>19:00:00</option>
+                                <option>20:00:00</option>
+                                <option>21:00:00</option>
+                                <option>22:00:00</option>
+                                <option>23:00:00</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- Submit button -->
+        <div class="field is-horizontal">
+            <div class="field-label is-normal"></div>
+            <div class="field-body">
+                <button class="button login-button is-link is-fullwidth has-text-centered" type="submit" name="submit">Verzenden</button>
+            </div>
+        </div>
+    </form>
 </main>
 
 <footer>
