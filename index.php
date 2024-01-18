@@ -176,7 +176,7 @@ if (isset($_POST['logout'])) {
                     Informatie
                 </p>
             </a>
-            <a href="#">
+            <a href="terms%20&%20conditions.php">
                 <p>
                     Terms & conditions
                 </p>
