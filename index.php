@@ -168,7 +168,7 @@ require_once 'includes/secure.php';
                     Terms & conditions
                 </p>
             </a>
-            <a href="#">
+            <a href="contact.php">
                 <p>
                     Contact
                 </p>
