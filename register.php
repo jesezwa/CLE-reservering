@@ -221,15 +221,26 @@ mysqli_close($db)
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="field is-horizontal">
+                                <div class="field-label"></div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="acceptTerms" required>
+                                            <a href="terms%20&%20conditions.php"> I accept the Terms & conditions</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Submit -->
                             <!-- Submit -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal"></div>
                                 <div class="field-body">
-                                    <button class="button is-link is-fullwidth register-button" type="submit" name="submit">Register</button>
-
+                                    <button class="button is-link is-fullwidth register-button" type="submit" name="submit" onclick="return validateForm()">Register</button>
                                 </div>
                             </div>
+
                         </form>
                     </section>
             </section>

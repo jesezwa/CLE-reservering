@@ -1,22 +1,14 @@
 <?php
 
-//Checken of de admin is ingelogd met user_id
 
-//Admin sessie beginnen
 
 //Connectie leggen met de database
 /** @var mysqli $db */
 require_once 'includes/connection.php';
-//Secure maken
+//Checken of de admin is ingelogd met user_id
 require_once 'includes/secure.php';
-//Datum select
 
 
-//Begin tijdstip select
-
-//eind tijdstip select
-
-// Stuur datum en tijdstippen naar de database
 
 
 ?>
@@ -64,7 +56,7 @@ require_once 'includes/secure.php';
         </div>
         <!-- Navbar logo in het midden -->
         <div>
-            <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
+            <a href="admin.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
 
         <!-- Navbar rechter kant -->
@@ -190,7 +182,7 @@ require_once 'includes/secure.php';
 
                 <!-- Logo in het midden -->
                 <div class="column is-one-third has-text-centered">
-                    <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
+                    <a href="admin.php"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
                 </div>
 
 

@@ -96,7 +96,9 @@ footer {
     position: sticky;
 
 }
-
+a{
+    position: sticky;
+}
 footer .hero.footer-hero {
     background-color: #2B2B2B;
 }
@@ -212,6 +214,14 @@ a.make-account:hover {
 .hero-body h2 {
     color: #2B2B2B;
 }
+.terms {
+    color: #ffffff;
 
+}
+
+h6{
+    color: white;
+    font-size: 22px;
+}
 /* reserveren CSS */
 
