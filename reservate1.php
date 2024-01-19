@@ -70,6 +70,7 @@ if(isset($_POST['submit'])) {
     <script src="datepicker.js"></script>
 </head>
 
+<?php if (isset($user_id)) { ?>
 
 <body>
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -237,4 +238,7 @@ if(isset($_POST['submit'])) {
 
 </footer>
 </body>
+
+<?php } else header("Location: login.php"); ?>
+
 </html>
