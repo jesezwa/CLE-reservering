@@ -223,5 +223,8 @@ h6{
     color: white;
     font-size: 22px;
 }
+.checkbox:hover {
+    cursor: default;
+}
 /* reserveren CSS */
 

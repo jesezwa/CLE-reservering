@@ -227,7 +227,7 @@ mysqli_close($db)
                                     <div class="field">
                                         <label class="checkbox">
                                             <input type="checkbox" name="acceptTerms" required>
-                                            <a href="terms%20&%20conditions.php"> I accept the Terms & conditions</a>
+                                             I accept the Terms & conditions
                                         </label>
                                     </div>
                                 </div>
