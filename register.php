@@ -14,7 +14,7 @@ $firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_P
 // Wanneer er gepost is
 if (isset($_POST['submit'])) {
     // If data valid
-    if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['phoneNumber']) || empty($_POST['email']) || empty($_POST['password'])) {
+    if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['phoneNumber']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['acceptTerms'])) {
         // als een veld leeg is
         if (empty($_POST['firstName'])) {
             // laat error zien
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
         }
         if (empty($_POST['acceptTerms'])) {
             // laat error zien
-            $passwordError = 'Acepteer de terms en conditions.';
+            $termsError = 'Acepteer de terms en conditions.';
         }
     } else {
         // post in variabelen zetten
