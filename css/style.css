@@ -197,6 +197,10 @@ a.make-account:hover {
     color: #fff;
 }
 
+.checkbox {
+    color: #2B2B2B;
+}
+
 /* informatie CSS */
 .information-hero.hero{
     background-color: transparent;
