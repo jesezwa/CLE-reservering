@@ -5,7 +5,6 @@ ini_set('display_errors', 1);
 
 /** @var mysqli $db */
 require_once "includes/connection.php";
-require_once 'includes/secure.php';
 
 $date = $_POST['date'];
 
@@ -22,17 +21,27 @@ or die('Error '.mysqli_error($db).' with query '.$query);
 
 
 
-$beginTimes = [];  // Initialize an array to store start times
+$times = [];
 $availabilities = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    $times[] = $row;
+    $availabilities[] = $row;
+    $startTime = strtotime($row['timestamp_begin']); // Begin tijd
+    $endTime = strtotime($row['timestamp_end']); // Een eindtijd
+    $timeLenght = 60*60; // Regel voor lengte tijdsloten
 
 
+    for ($time = $startTime; $time < $endTime; $time += $timeLenght) {
+        $times[] = date('H:i', $time); //Zet met date functie time in juiste format in array
+
+    }
 
 }
 
 
-if ($times <= $time)
+
+
+
+
 
 
 
@@ -130,16 +139,24 @@ if ($times <= $time)
     <section class="section is-medium">
         <h2 class="has-text-centered pb-3 is-size-2">Kies een tijdslot en geef een korte beschrijving</h2>
     <div class="field is-horizontal has-addons has-addons-centered">
-      <div class="select">
-        <label>
-            <select>
-                <?php foreach ($availabilities as $availability) { ?>
-                    <option><?= $availability['timestamp_begin'] ?> - <?= $availability['timestamp_end'] ?> </option>
-                <?php }?>
+        <div class="select">
+            <label>
+                <select name="selected_time">
+                    <?php foreach ($times as $time){?>
+                        <?php
+                        $isAvailable = !in_array($time, $availabilities);
+                        if ($isAvailable) {
+                            $endTime = date('H:i', strtotime($time) + $timeLenght);
+                            ?>
+                            <option value="<?= $time ?>">
+                                <?= "{$time} - {$endTime}" ?>
+                            </option>
+                        <?php } ?>
+                    <?php }?>
 
-            </select>
-        </label>
-      </div>
+                </select>
+            </label>
+        </div>
     </div>
         <div class="field">
             <div class="control">
@@ -157,15 +174,6 @@ if ($times <= $time)
 
             </div>
         </div>
-        <div class="field is-horizontal has-addons has-addons-centered">
-            <div class="select">
-                <label>
-                    <select>
-
-
-                    </select>
-                </label>
-            </div>
 
 </section>
 

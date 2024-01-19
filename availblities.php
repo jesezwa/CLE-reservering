@@ -47,8 +47,6 @@ if (mysqli_num_rows($result) > 0) {
     <title>Wilma haakt</title>
 </head>
 
-<?php if (isset($user_id)) { ?>
-
 <body>
 <nav class="navbar" role="navigation" aria-label="main navigation">
 
@@ -77,10 +75,21 @@ if (mysqli_num_rows($result) > 0) {
         </div>
 
         <!-- Navbar rechter kant -->
-        <div>
+        <?php if(isset($user_id)) {?>
             <form action="" method="post">
                 <input type="submit" name="logout" value="Logout">
             </form>
+        <?php } else { ?>
+        <div class="navbar-end pr-4">
+            <a class="navbar-item" href="register.php">
+                Register
+            </a>
+
+            <a class="navbar-item" href="login.php">
+                Login
+            </a>
+
+            <?php }?>
         </div>
     </div>
 
@@ -230,7 +239,4 @@ if (mysqli_num_rows($result) > 0) {
 
 </footer>
 </body>
-
-<?php } else header("Location: login.php"); ?>
-
 </html>
