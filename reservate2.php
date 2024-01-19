@@ -27,11 +27,11 @@ $availabilities = [];
 while ($row = mysqli_fetch_assoc($result)) {
     $availabilities[] = $row;
 
-    $beginTimes[] = $row['timestamp_begin'];
+
 
 }
 
-$times =
+$times ='';
 
 
 

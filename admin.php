@@ -3,12 +3,18 @@
 require_once 'includes/connection.php';
 require_once 'includes/secure.php';
 
+
+
+
+
+
 // Check of gebruiker is ingelogd
 if (!isset($_SESSION['user_id'])) {
     // als dit niet zo is stuur naar login
     header("Location: login.php");
     exit;
 }
+
 
 $user_id = $_SESSION['user_id'];
 $query = "SELECT * FROM users WHERE id = $user_id";
