@@ -3,18 +3,12 @@
 require_once 'includes/connection.php';
 require_once 'includes/secure.php';
 
-
-
-
-
-
 // Check of gebruiker is ingelogd
 if (!isset($_SESSION['user_id'])) {
     // als dit niet zo is stuur naar login
     header("Location: login.php");
     exit;
 }
-
 
 $user_id = $_SESSION['user_id'];
 $query = "SELECT * FROM users WHERE id = $user_id";
@@ -23,12 +17,12 @@ $result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db));
 if (mysqli_num_rows($result) > 0) {
     $user_row = mysqli_fetch_assoc($result);
     if ($user_row['admin'] != 1) {
-        // Niet ingelogd als admin, stuur door naar de inlogpagina
-        header("Location: login.php");
+        // Niet admin stuur naar index
+        header("Location: index.php");
         exit;
     }
 } else {
-    // Gebruiker niet gevonden, stuur door naar de inlogpagina
+    // Gebruiker bestaat niet stuur naar log in
     header("Location: login.php");
     exit;
 }

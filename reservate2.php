@@ -106,17 +106,21 @@ if ($times <= $time)
         </div>
 
         <!-- Navbar rechter kant -->
+        <?php if(isset($user_id)) {?>
+            <form action="" method="post">
+                <input type="submit" name="logout" value="Logout">
+            </form>
+        <?php } else { ?>
         <div class="navbar-end pr-4">
-            <a class="navbar-item" href="index.php">
-                Home
+            <a class="navbar-item" href="register.php">
+                Register
             </a>
 
-            <a class="navbar-item">
+            <a class="navbar-item" href="login.php">
                 Login
             </a>
 
-
-
+            <?php }?>
         </div>
     </div>
 

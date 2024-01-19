@@ -4,9 +4,6 @@
 require_once "includes/connection.php";
 require_once 'includes/secure.php';
 
-
-
-
 ?>
 
 <!doctype html>
@@ -22,11 +19,6 @@ require_once 'includes/secure.php';
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=GFS+Neohellenic:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Gentium+Plus:ital,wght@0,400;1,700&family=Young+Serif&display=swap" rel="stylesheet">
     <title>Wilma haakt</title>
 </head>
-
-
-
-
-
 
     <body>
 
@@ -61,6 +53,11 @@ require_once 'includes/secure.php';
             </div>
 
             <!-- Navbar rechter kant -->
+            <?php if(isset($user_id)) {?>
+                <form action="" method="post">
+                    <input type="submit" name="logout" value="Logout">
+                </form>
+            <?php } else { ?>
             <div class="navbar-end pr-4">
                 <a class="navbar-item" href="register.php">
                     Register
@@ -70,8 +67,7 @@ require_once 'includes/secure.php';
                     Login
                 </a>
 
-
-
+                <?php }?>
             </div>
         </div>
 
@@ -184,7 +180,6 @@ require_once 'includes/secure.php';
         </section>
     </footer>
     </body>
-
 
 
 </html>

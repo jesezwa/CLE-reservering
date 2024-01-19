@@ -22,11 +22,6 @@ require_once 'includes/secure.php';
     <title>Wilma haakt</title>
 </head>
 
-<?php if (isset($user_id)) { ?>
-
-
-
-
 <body>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -44,8 +39,8 @@ require_once 'includes/secure.php';
     <div id="navbarBasicExample" class="navbar-menu">
         <!-- Navbar linker kant -->
         <div class="navbar-start pl-4">
-            <a class="navbar-item" href="index.php">
-                Home
+            <a class="navbar-item" href="information.php">
+                Informatie
             </a>
 
             <a class="navbar-item">
@@ -60,6 +55,11 @@ require_once 'includes/secure.php';
         </div>
 
         <!-- Navbar rechter kant -->
+        <?php if(isset($user_id)) {?>
+            <form action="" method="post">
+                <input type="submit" name="logout" value="Logout">
+            </form>
+        <?php } else { ?>
         <div class="navbar-end pr-4">
             <a class="navbar-item" href="register.php">
                 Register
@@ -69,8 +69,7 @@ require_once 'includes/secure.php';
                 Login
             </a>
 
-
-
+            <?php }?>
         </div>
     </div>
 
@@ -187,7 +186,5 @@ require_once 'includes/secure.php';
     </section>
 </footer>
 </body>
-
-<?php } else header("Location: login.php"); ?>
 
 </html>

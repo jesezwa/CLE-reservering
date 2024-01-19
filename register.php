@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // variablen opstellen voor errors en om de data terug te schrijven
-$firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = '';
+$firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = $termsError = '';
 $firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_POST = '';
 
 // Wanneer er gepost is
@@ -18,35 +18,39 @@ if (isset($_POST['submit'])) {
         // als een veld leeg is
         if (empty($_POST['firstName'])) {
             // laat error zien
-            $firstNameError = 'Voer je voornaam in';
+            $firstNameError = 'Voer je voornaam in.';
         } else {
             // POST naar de form
             $firstName_POST = $_POST['firstName'];
         }
         if (empty($_POST['lastName'])) {
             // laat error zien
-            $lastNameError = 'Voer je achternaam in';
+            $lastNameError = 'Voer je achternaam in.';
         } else {
             // POST naar de form
             $lastName_POST = $_POST['lastName'];
         }
         if (empty($_POST['phoneNumber'])) {
             // laat error zien
-            $phoneNumberError = 'Voer je telefoonnummer in';
+            $phoneNumberError = 'Voer je telefoonnummer in.';
         } else {
             // POST naar de form
             $phoneNumber_POST = $_POST['phoneNumber'];
         }
         if (empty($_POST['email'])) {
             // laat error zien
-            $emailError = 'Voer je email in';
+            $emailError = 'Voer je email in.';
         } else {
             // POST naar de form
             $email_POST = $_POST['email'];
         }
         if (empty($_POST['password'])) {
             // laat error zien
-            $passwordError = 'Voer je wachtwoord in';
+            $passwordError = 'Voer je wachtwoord in.';
+        }
+        if (empty($_POST['acceptTerms'])) {
+            // laat error zien
+            $passwordError = 'Acepteer de terms en conditions.';
         }
     } else {
         // post in variabelen zetten
@@ -112,14 +116,21 @@ mysqli_close($db)
             <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
         <!-- Navbar rechter kant -->
+        <?php if(isset($user_id)) {?>
+            <form action="" method="post">
+                <input type="submit" name="logout" value="Logout">
+            </form>
+        <?php } else { ?>
         <div class="navbar-end pr-4">
-            <a class="navbar-item" href="index.php">
-                Home
+            <a class="navbar-item" href="register.php">
+                Register
             </a>
+
             <a class="navbar-item" href="login.php">
                 Login
             </a>
 
+            <?php }?>
         </div>
     </div>
 </nav>
@@ -169,19 +180,19 @@ mysqli_close($db)
                                 </div>
                             </div>
 
-                            <!-- Telefoonnummer -->
+                            <!-- Password -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal">
-                                    <label class="label" for="phoneNumber">Telefoonnummer</label>
+                                    <label class="label" for="password">Password</label>
                                 </div>
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control has-icons-left">
-                                            <input class="input" id="phoneNumber" type="text" name="phoneNumber" value="<?= $phoneNumber_POST ?>" />
-                                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                                            <input class="input" id="password" type="password" name="password" value=""/>
+                                            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
                                         </div>
                                         <p class="help is-danger">
-                                            <?= $phoneNumberError ?>
+                                            <?= $passwordError ?>
                                         </p>
                                     </div>
                                 </div>
@@ -204,35 +215,42 @@ mysqli_close($db)
                                     </div>
                                 </div>
                             </div>
-                            <!-- Password -->
+
+                            <!-- Telefoonnummer -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal">
-                                    <label class="label" for="password">Password</label>
+                                    <label class="label" for="phoneNumber">Telefoon nummer</label>
                                 </div>
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control has-icons-left">
-                                            <input class="input" id="password" type="password" name="password" value=""/>
-                                            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+                                            <input class="input" id="phoneNumber" type="text" name="phoneNumber" value="<?= $phoneNumber_POST ?>" />
+                                            <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                         </div>
                                         <p class="help is-danger">
-                                            <?= $passwordError ?>
+                                            <?= $phoneNumberError ?>
                                         </p>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- terms -->
                             <div class="field is-horizontal">
                                 <div class="field-label"></div>
                                 <div class="field-body">
                                     <div class="field">
                                         <label class="checkbox">
-                                            <input type="checkbox" name="acceptTerms" required>
+                                            <input type="checkbox" name="acceptTerms">
                                              I accept the Terms & conditions
                                         </label>
+                                        <p class="help is-danger">
+                                            <?= $termsError ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Submit -->
+
+
                             <!-- Submit -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal"></div>
