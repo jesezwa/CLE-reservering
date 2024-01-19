@@ -11,7 +11,7 @@ $date = $_POST['date'];
 
 
 $query = "SELECT * FROM availablities WHERE date = '$date'";
-print_r($query);
+
 
 
 $result = mysqli_query($db, $query)
@@ -29,8 +29,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $beginTimes[] = $row['timestamp_begin'];
 
 }
-echo '<br />';
-print_r($availabilities);
+
+$times =
 
 
 
@@ -56,7 +56,8 @@ print_r($availabilities);
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -120,37 +121,48 @@ print_r($availabilities);
 </nav>
 
 <main>
-    <div class="field is-horizontal">
-        <div class="field-body">
-            <div class="field">
-                <label class="label">Begin Tijd:</label>
-                <div class="control">
-                    <?php if (isset($beginTime)){ echo $beginTime;}
-                    else {'Er zijn geen tijden beschikbaar voor deze dag';} ?>
+    <section class="section is-medium">
+        <h2 class="has-text-centered pb-3 is-size-2">Kies een tijdslot en geef een korte beschrijving</h2>
+    <div class="field is-horizontal has-addons has-addons-centered">
+      <div class="select">
+        <label>
+            <select>
+                <?php foreach ($availabilities as $availability) { ?>
+                    <option><?= $availability['timestamp_begin'] ?> - <?= $availability['timestamp_end'] ?> </option>
+                <?php }?>
 
-                </div>
+            </select>
+        </label>
+      </div>
+    </div>
+        <div class="field">
+            <div class="control">
+                <textarea class="textarea" placeholder="Geef hier een beschrijving"></textarea>
             </div>
         </div>
-    </div>
-    <div class="field is-horizontal">
-        <div class="field-body">
-            <div class="field">
-                <label class="label">Eind Tijd:</label>
-                <div class="control">
-                    <?php echo isset($endTime) ? $endTime : 'Geen beschikbaarheid'; ?>
-                </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal"></div>
+            <div class="field-body">
+                <a class="button is-link is-fullwidth" href="reservate1.php">Ga terug</a>
+                <button class="button is-link is-fullwidth" type="submit" name="submit">Maak afspraak</button>
+
+
+
             </div>
         </div>
-    </div>
+        <div class="field is-horizontal has-addons has-addons-centered">
+            <div class="select">
+                <label>
+                    <select>
 
-    <div class="select">
-        <select>
-            <?php foreach ($availabilities as $availability) { ?>
-                <option><?= $availability['timestamp_begin'] ?> - <?= $availability['timestamp_end'] ?> </option>
-            <?php }?>
 
-        </select>
-    </div>
+                    </select>
+                </label>
+            </div>
+
+</section>
+
 </main>
 
 <footer >

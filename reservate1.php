@@ -157,7 +157,7 @@ if(isset($_POST['submit'])) {
                         <div class="field-label is-normal"></div>
                         <div class="field-body">
 
-                            <button class="button is-link is-fullwidth" type="submit" name="submit">Maak afspraak</button>
+                            <button class="button is-link is-fullwidth" type="submit" name="submit">Volgende</button>
 
 
                         </div>
