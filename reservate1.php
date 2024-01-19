@@ -180,17 +180,17 @@ if(isset($_POST['submit'])) {
             <div class="columns">
                 <!-- Linker kant van de footer -->
                 <div class="column footer-start is-one-third mt-6">
-                    <a href="#">
+                    <a href="information.php">
                         <p>
                             Informatie
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="terms%20&%20conditions.php">
                         <p>
                             Terms & conditions
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="contact.php">
                         <p>
                             Contact
                         </p>

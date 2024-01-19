@@ -91,8 +91,9 @@ require_once 'includes/secure.php';
                         <p class="has-text-centered is-size-4 pb-4"> Bestel hier de beste, mooiste en meest goedkope haakwerken
                             van Nederland
                         </p>
-                            <div class="columns is-centered">
-                                <button class="button is-normal reserve-button">Reserveer hier !</button>
+                            <div class="columns is-centered"><a href="reservate1.php">
+                                <button class="button is-normal reserve-button" > Reserveer hier !</button>
+                                </a>
                             </div>
                     </div>
                 </div>
@@ -158,7 +159,7 @@ require_once 'includes/secure.php';
     <div class="columns">
         <!-- Linker kant van de footer -->
         <div class="column footer-start is-one-third mt-6">
-            <a href="#">
+            <a href="information.php">
                 <p>
                     Informatie
                 </p>

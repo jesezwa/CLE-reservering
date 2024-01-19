@@ -177,7 +177,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="columns">
                 <!-- Linker kant van de footer -->
                 <div class="column footer-start is-one-third mt-6">
-                    <a href="#">
+                    <a href="information.php">
                         <p>
                             Informatie
                         </p>
@@ -187,7 +187,7 @@ if (mysqli_num_rows($result) > 0) {
                             Terms & conditions
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="contact.php">
                         <p>
                             Contact
                         </p>

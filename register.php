@@ -274,12 +274,12 @@ mysqli_close($db)
                             Informatie
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="terms%20&%20conditions.php">
                         <p>
                             Terms & conditions
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="contact.php">
                         <p>
                             Contact
                         </p>
@@ -287,7 +287,7 @@ mysqli_close($db)
                 </div>
                 <!-- Logo in het midden -->
                 <div class="column is-one-third has-text-centered">
-                    <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
+                    <a href="index.php"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
                 </div>
 
                 <!-- Rechterkant van de footer met de sociale media -->
