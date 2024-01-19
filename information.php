@@ -43,7 +43,7 @@ require_once 'includes/secure.php';
                 Informatie
             </a>
 
-            <a class="navbar-item">
+            <a class="navbar-item" href="reservate1.php">
                 Reserveren
             </a>
 
