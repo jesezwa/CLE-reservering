@@ -96,7 +96,9 @@ footer {
     position: sticky;
 
 }
-
+a{
+    position: sticky;
+}
 footer .hero.footer-hero {
     background-color: #2B2B2B;
 }
@@ -195,6 +197,10 @@ a.make-account:hover {
     color: #fff;
 }
 
+.checkbox {
+    color: #2B2B2B;
+}
+
 /* informatie CSS */
 .information-hero.hero{
     background-color: transparent;
@@ -212,6 +218,25 @@ a.make-account:hover {
 .hero-body h2 {
     color: #2B2B2B;
 }
+.terms {
+    color: #ffffff;
 
+}
+
+h6{
+    color: white;
+    font-size: 22px;
+}
+.checkbox:hover {
+    cursor: default;
+}
+
+
+.contact{
+    flex: auto;
+   font-size: 4rem;
+    text-align: center;
+    margin-top: 4rem;
+}
 /* reserveren CSS */
 
