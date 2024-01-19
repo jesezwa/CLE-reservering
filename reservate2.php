@@ -25,13 +25,14 @@ or die('Error '.mysqli_error($db).' with query '.$query);
 $beginTimes = [];  // Initialize an array to store start times
 $availabilities = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    $availabilities[] = $row;
+    $times[] = $row;
 
 
 
 }
 
-$times ='';
+
+if ($times <= $time)
 
 
 

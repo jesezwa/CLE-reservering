@@ -12,13 +12,6 @@ session_start();
 if (isset($_POST['logout'])) {
     // destroy session
     session_destroy();
-}
-
-/*
-$logout =$_POST['logout'];
-
-if (isset($logout)){
-    session_destroy();
     header('Location: index.php');
 }
-*/
+
