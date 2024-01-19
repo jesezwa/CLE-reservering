@@ -158,7 +158,7 @@ require_once 'includes/secure.php';
     <div class="columns">
         <!-- Linker kant van de footer -->
         <div class="column footer-start is-one-third mt-6">
-            <a href="#">
+            <a href="information.php">
                 <p>
                     Informatie
                 </p>

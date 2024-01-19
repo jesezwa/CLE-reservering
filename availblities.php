@@ -178,12 +178,12 @@ if (mysqli_num_rows($result) > 0) {
                             Informatie
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="terms%20&%20conditions.php">
                         <p>
                             Terms & conditions
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="contact.php">
                         <p>
                             Contact
                         </p>

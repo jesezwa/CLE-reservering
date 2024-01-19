@@ -216,12 +216,12 @@ mysqli_close($db);
                             Informatie
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="terms%20&%20conditions.php">
                         <p>
                             Terms & conditions
                         </p>
                     </a>
-                    <a href="#">
+                    <a href="contact.php">
                         <p>
                             Contact
                         </p>
