@@ -2,8 +2,6 @@
 /** @var mysqli $db */
 require_once "includes/connection.php";
 require_once 'includes/secure.php';
-// start sessie
-session_start();
 
 // variablen opstellen voor errors en om de data terug te schrijven
 $emailError = $passwordError = $logInError ='';
@@ -49,9 +47,14 @@ if (isset($_POST['submit'])) {
             if (password_verify($_POST['password'], $hashed_password)) {
                 // Store the user in the session
                 $_SESSION['user_id'] = $user_row['id'];
-                $_SESSION['admin'] = $user_row['admin'];
                 // Redirect to secure page
-                header("Location: index.php");
+                if ($user_row['admin'] == '1') {
+                    header("Location: admin.php");
+                    print_r($user_row);
+                } else {
+                    header("Location: index.php");
+                }
+
                 // exit
                 exit;
             }

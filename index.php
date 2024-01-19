@@ -1,14 +1,9 @@
 <?php
 /** @var mysqli $db */
 require_once 'includes/connection.php';
+require_once 'includes/secure.php';
 
-session_start();
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-if (isset($_POST['logout'])) {
-    session_destroy();
-   header('Location: index.php');
-}
 
 ?>
 
@@ -49,9 +44,6 @@ if (isset($_POST['logout'])) {
 
             <a class="navbar-item" href="reservate1.php">
                 Reserveren
-            </a>
-            <a class="navbar-item" href="availblities.php">
-                beschikbaarheid
             </a>
 
 
