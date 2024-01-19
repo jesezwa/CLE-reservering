@@ -73,7 +73,7 @@ if (mysqli_num_rows($result) > 0) {
         </div>
         <!-- Navbar logo in het midden -->
         <div>
-            <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
+            <a href="admin.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
 
         <!-- Navbar rechter kant -->
@@ -192,7 +192,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 <!-- Logo in het midden -->
                 <div class="column is-one-third has-text-centered">
-                    <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
+                    <a href="admin.php"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
                 </div>
 
 

@@ -76,54 +76,38 @@ require_once 'includes/secure.php';
     <main>
         <section class="hero is-medium is-primary information-hero">
             <div class="hero-body">
-                <h2 class="has-text-centered is-size-1 pb-5">Informatie over mij en het bedrijf</h2>
+                <h2 class="has-text-centered is-size-1 pb-5">Terms & conditions</h2>
                 <div class="tile is-parent">
                     <article class="tile is-child notification is-danger info-section">
-                        <div class="content">
+                        <div >
                             <div class="columns">
                                 <div class="column">
-                                    <p>Over mij</p>
-                                    <p>
-                                        Algemene Voorwaarden
-
-                                    <h3>Inleiding</h3>
+                                    <h6>
+                                        Algemene Voorwaarden</h6>
+                                    <br><br>
+                                    <h6 class="terms">Inleiding</h6>
                                         Door het gebruik van deze website stemt u in met deze Algemene Voorwaarden. Als u niet akkoord gaat met deze voorwaarden, gebruik dan deze website niet.
-
-                                        Gebruik van de Website
+<br><br>
+                                    <h6 class="terms"> Gebruik van de Website </h6>
                                         U stemt ermee in de website alleen voor wettige doeleinden te gebruiken. U mag de site niet gebruiken op een manier die schadelijk is voor anderen.
-
-                                        Intellectuele Eigendom
+                                    <br><br>
+                                    <h6 class="terms">Intellectuele Eigendom</h6>
                                         Alle inhoud op deze website, inclusief maar niet beperkt tot tekst, afbeeldingen, logo's, en software, is eigendom van [Bedrijfsnaam] en is beschermd door auteursrecht, handelsmerk en andere wetten die van toepassing zijn.
-
-                                        Privacy
-                                        Door het gebruik van deze website stemt u in met het Privacybeleid van [Bedrijfsnaam], dat beschikbaar is op de website.
-
-                                        Aansprakelijkheid
+                                    <br><br>
+                                    <h6 class="terms">Privacy</h6>
+                                        Door het gebruik van deze website stemt u in met het Privacybeleid van Wilma, dat beschikbaar is op de website.
+                                    <br><br>
+                                    <h6 class="terms"> Aansprakelijkheid</h6>
                                         Wilma is niet aansprakelijk voor enige directe, indirecte, incidentele, gevolg- of speciale schade die voortvloeit uit of op enigerlei wijze verband houdt met uw gebruik van deze website.
-
-                                        Wijzigingen in de Voorwaarden
+                                    <br><br>
+                                    <h6 class="terms"> Wijzigingen in de Voorwaarden</h6>
                                         Wilma behoudt zich het recht voor om deze Algemene Voorwaarden op elk moment te wijzigen. Het is uw verantwoordelijkheid om regelmatig te controleren op wijzigingen. Door het gebruik van de website na wijzigingen gaat u akkoord met de herziene voorwaarden.
+                                    <br><br>
+                                    <h6 class="terms"> Toepasselijk Recht</h6>
+                                        Deze Algemene Voorwaarden worden beheerst door de wetten van Nederland en eventuele geschillen zullen worden voorgelegd aan de bevoegde rechtbanken van Rotterdam.
 
-                                        Toepasselijk Recht
-                                        Deze Algemene Voorwaarden worden beheerst door de wetten van [land] en eventuele geschillen zullen worden voorgelegd aan de bevoegde rechtbanken van [plaats].
 
 
-                                    </p>
-                                    <div class="columns">
-                                        <div class="column is-left">
-                                            Welkom bij wilma, het haakparadijs. Met passie
-                                            haak ik warmte in elke steek en breng ik mijn
-                                            liefde voor handwerk tot leven. Elk handgemaakt
-                                            stuk, van sjaals tot amigurumi, draagt een uniek
-                                            verhaal. Wilma is niet alleen een plek voor
-                                            prachtige creaties, maar ook voor het delen van
-                                            kennis en het verspreiden van de vreugde van het
-                                            haken. Ontdek de magie van handwerk en laat
-                                            wilma je inspireren. Bedankt voor het verkennen
-                                            van mijn wereld van draden en dromen - waar elk
-                                            stuk met liefde is gehaakt.
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>
@@ -145,7 +129,7 @@ require_once 'includes/secure.php';
                                 Informatie
                             </p>
                         </a>
-                        <a href="#">
+                        <a href="information.php">
                             <p>
                                 Terms & conditions
                             </p>
