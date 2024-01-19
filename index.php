@@ -1,14 +1,9 @@
 <?php
 /** @var mysqli $db */
 require_once 'includes/connection.php';
+require_once 'includes/secure.php';
 
-session_start();
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-if (isset($_POST['logout'])) {
-    session_destroy();
-   header('Location: index.php');
-}
 
 ?>
 
@@ -50,9 +45,6 @@ if (isset($_POST['logout'])) {
             <a class="navbar-item" href="reservate1.php">
                 Reserveren
             </a>
-            <a class="navbar-item" href="availblities.php">
-                beschikbaarheid
-            </a>
 
 
         </div>
@@ -77,12 +69,7 @@ if (isset($_POST['logout'])) {
                 Login
             </a>
 
-
-
             <?php }?>
-
-
-
         </div>
     </div>
 
@@ -171,7 +158,7 @@ if (isset($_POST['logout'])) {
     <div class="columns">
         <!-- Linker kant van de footer -->
         <div class="column footer-start is-one-third mt-6">
-            <a href="information.php">
+            <a href="#">
                 <p>
                     Informatie
                 </p>

@@ -3,11 +3,14 @@
 /** @var mysqli $db */
 require_once "includes/connection.php";
 require_once 'includes/secure.php';
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 // variablen opstellen voor errors en om de data terug te schrijven
 $firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = '';
 $firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_POST = '';
+
 // Wanneer er gepost is
 if (isset($_POST['submit'])) {
     // If data valid
@@ -52,11 +55,13 @@ if (isset($_POST['submit'])) {
         $phoneNumber = mysqli_real_escape_string($db, $_POST['phoneNumber']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
         $password = PASSWORD_HASH($_POST['password'], PASSWORD_DEFAULT);
+
         // query maken om data in database te zetten
         $query = "INSERT INTO `users`( `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_created`) VALUES ( '$email','$password','$firstName','$lastName','$phoneNumber',NOW())";
         $result = mysqli_query($db, $query)
         //or die statement
         or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
         // Redirect to login page
         header("Location: login.php");
         // Exit the code
@@ -111,7 +116,7 @@ mysqli_close($db)
             <a class="navbar-item" href="index.php">
                 Home
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" href="login.php">
                 Login
             </a>
 
@@ -278,8 +283,6 @@ mysqli_close($db)
                         </p>
                     </a>
                 </div>
-
-
             </div>
         </div>
     </section>
