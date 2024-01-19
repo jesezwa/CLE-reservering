@@ -226,5 +226,13 @@ h6{
 .checkbox:hover {
     cursor: default;
 }
+
+
+.contact{
+    flex: auto;
+   font-size: 4rem;
+    text-align: center;
+    margin-top: 4rem;
+}
 /* reserveren CSS */
 
