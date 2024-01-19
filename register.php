@@ -59,9 +59,10 @@ if (isset($_POST['submit'])) {
         $phoneNumber = mysqli_real_escape_string($db, $_POST['phoneNumber']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
         $password = PASSWORD_HASH($_POST['password'], PASSWORD_DEFAULT);
+        $admin = $email = mysqli_real_escape_string($db, $_POST['admin']);
 
         // query maken om data in database te zetten
-        $query = "INSERT INTO `users`( `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_created`) VALUES ( '$email','$password','$firstName','$lastName','$phoneNumber',NOW())";
+        $query = "INSERT INTO `users`( `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_created`, `admin`) VALUES ( '$email','$password','$firstName','$lastName','$phoneNumber',NOW(), '$admin')";
         $result = mysqli_query($db, $query)
         //or die statement
         or die('Error ' . mysqli_error($db) . ' with query ' . $query);
@@ -180,24 +181,6 @@ mysqli_close($db)
                                 </div>
                             </div>
 
-                            <!-- Password -->
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label" for="password">Password</label>
-                                </div>
-                                <div class="field-body">
-                                    <div class="field">
-                                        <div class="control has-icons-left">
-                                            <input class="input" id="password" type="password" name="password" value=""/>
-                                            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
-                                        </div>
-                                        <p class="help is-danger">
-                                            <?= $passwordError ?>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Email -->
                             <div class="field is-horizontal">
                                 <div class="field-label is-normal">
@@ -211,6 +194,24 @@ mysqli_close($db)
                                         </div>
                                         <p class="help is-danger">
                                             <?= $emailError ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label" for="password">Wachtwoord</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control has-icons-left">
+                                            <input class="input" id="password" type="password" name="password" value=""/>
+                                            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+                                        </div>
+                                        <p class="help is-danger">
+                                            <?= $passwordError ?>
                                         </p>
                                     </div>
                                 </div>
@@ -250,6 +251,8 @@ mysqli_close($db)
                                 </div>
                             </div>
 
+                            <!-- admin -->
+                            <input class="input" id="admin" type="hidden" name="admin" value="0"/>
 
                             <!-- Submit -->
                             <div class="field is-horizontal">
