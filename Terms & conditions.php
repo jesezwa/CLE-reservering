@@ -3,10 +3,6 @@
 /** @var mysqli $db */
 require_once "includes/connection.php";
 require_once 'includes/secure.php';
-// start sessie
-session_start();
-
-$user_id = $_SESSION['user_id'];
 
 ?>
 
@@ -23,11 +19,6 @@ $user_id = $_SESSION['user_id'];
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=GFS+Neohellenic:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Gentium+Plus:ital,wght@0,400;1,700&family=Young+Serif&display=swap" rel="stylesheet">
     <title>Wilma haakt</title>
 </head>
-
-<?php if (isset($user_id)) { ?>
-
-
-
 
     <body>
 
@@ -62,6 +53,11 @@ $user_id = $_SESSION['user_id'];
             </div>
 
             <!-- Navbar rechter kant -->
+            <?php if(isset($user_id)) {?>
+                <form action="" method="post">
+                    <input type="submit" name="logout" value="Logout">
+                </form>
+            <?php } else { ?>
             <div class="navbar-end pr-4">
                 <a class="navbar-item" href="register.php">
                     Register
@@ -71,8 +67,7 @@ $user_id = $_SESSION['user_id'];
                     Login
                 </a>
 
-
-
+                <?php }?>
             </div>
         </div>
 
@@ -202,6 +197,5 @@ $user_id = $_SESSION['user_id'];
     </footer>
     </body>
 
-<?php } else header("Location: login.php"); ?>
 
 </html>

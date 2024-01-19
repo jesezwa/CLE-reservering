@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // variablen opstellen voor errors en om de data terug te schrijven
-$firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = '';
+$firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = $termsError = '';
 $firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_POST = '';
 
 // Wanneer er gepost is
@@ -43,6 +43,10 @@ if (isset($_POST['submit'])) {
         } else {
             // POST naar de form
             $email_POST = $_POST['email'];
+        }
+        if (empty($_POST['password'])) {
+            // laat error zien
+            $passwordError = 'Voer je wachtwoord in';
         }
         if (empty($_POST['password'])) {
             // laat error zien
@@ -112,14 +116,21 @@ mysqli_close($db)
             <a href="index.php"><img src="images/wilmaLogo.png" width="100" class="logo"></a>
         </div>
         <!-- Navbar rechter kant -->
+        <?php if(isset($user_id)) {?>
+            <form action="" method="post">
+                <input type="submit" name="logout" value="Logout">
+            </form>
+        <?php } else { ?>
         <div class="navbar-end pr-4">
-            <a class="navbar-item" href="index.php">
-                Home
+            <a class="navbar-item" href="register.php">
+                Register
             </a>
+
             <a class="navbar-item" href="login.php">
                 Login
             </a>
 
+            <?php }?>
         </div>
     </div>
 </nav>

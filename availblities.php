@@ -1,22 +1,34 @@
 <?php
-
-//Checken of de admin is ingelogd met user_id
-
-//Admin sessie beginnen
-
 //Connectie leggen met de database
 /** @var mysqli $db */
 require_once 'includes/connection.php';
 //Secure maken
 require_once 'includes/secure.php';
-//Datum select
 
+// Check of gebruiker is ingelogd
+if (!isset($_SESSION['user_id'])) {
+    // als dit niet zo is stuur naar login
+    header("Location: login.php");
+    exit;
+}
 
-//Begin tijdstip select
+$user_id = $_SESSION['user_id'];
+$query = "SELECT * FROM users WHERE id = $user_id";
+$result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db));
 
-//eind tijdstip select
+if (mysqli_num_rows($result) > 0) {
+    $user_row = mysqli_fetch_assoc($result);
+    if ($user_row['admin'] != 1) {
+        // Niet admin stuur naar index
+        header("Location: index.php");
+        exit;
+    }
+} else {
+    // Gebruiker bestaat niet stuur naar log in
+    header("Location: login.php");
+    exit;
+}
 
-// Stuur datum en tijdstippen naar de database
 
 
 ?>
@@ -35,6 +47,7 @@ require_once 'includes/secure.php';
     <title>Wilma haakt</title>
 </head>
 
+<?php if (isset($user_id)) { ?>
 
 <body>
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -53,11 +66,7 @@ require_once 'includes/secure.php';
         <!-- Navbar linker kant -->
         <div class="navbar-start pl-4">
             <a class="navbar-item" href="information.php">
-                Informatie
-            </a>
-
-            <a class="navbar-item">
-                Reserveren
+                Beschikbaarheid
             </a>
 
 
@@ -68,17 +77,10 @@ require_once 'includes/secure.php';
         </div>
 
         <!-- Navbar rechter kant -->
-        <div class="navbar-end pr-4">
-            <a class="navbar-item" href="index.php">
-                Home
-            </a>
-
-            <a class="navbar-item">
-                Login
-            </a>
-
-
-
+        <div>
+            <form action="" method="post">
+                <input type="submit" name="logout" value="Logout">
+            </form>
         </div>
     </div>
 
@@ -228,4 +230,7 @@ require_once 'includes/secure.php';
 
 </footer>
 </body>
+
+<?php } else header("Location: login.php"); ?>
+
 </html>
