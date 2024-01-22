@@ -2,6 +2,7 @@
 
 body {
     font-family: 'Anton', sans-serif;
+
 }
 
 html {
@@ -179,6 +180,7 @@ a.make-account:hover {
 
 .register-hero.hero {
     background-color: transparent;
+    text-shadow: none;
 }
 
 .register-hero.hero.is-primary .title {

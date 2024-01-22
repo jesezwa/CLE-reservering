@@ -11,6 +11,7 @@ ini_set('display_errors', 1);
 $firstNameError = $lastNameError = $phoneNumberError = $emailError = $passwordError = $termsError = '';
 $firstName_POST = $lastName_POST = $phoneNumber_POST = $email_POST = $password_POST = '';
 
+
 // Wanneer er gepost is
 if (isset($_POST['submit'])) {
     // If data valid
@@ -59,7 +60,7 @@ if (isset($_POST['submit'])) {
         $phoneNumber = mysqli_real_escape_string($db, $_POST['phoneNumber']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
         $password = PASSWORD_HASH($_POST['password'], PASSWORD_DEFAULT);
-        $admin = $email = mysqli_real_escape_string($db, $_POST['admin']);
+        $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
         // query maken om data in database te zetten
         $query = "INSERT INTO `users`( `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_created`, `admin`) VALUES ( '$email','$password','$firstName','$lastName','$phoneNumber',NOW(), '$admin')";
@@ -252,7 +253,7 @@ mysqli_close($db)
                             </div>
 
                             <!-- admin -->
-                            <input class="input" id="admin" type="hidden" name="admin" value="0"/>
+                            <input class="input" id="admin" type="hidden" name="admin" value="0" />
 
                             <!-- Submit -->
                             <div class="field is-horizontal">
@@ -321,4 +322,3 @@ mysqli_close($db)
 </footer>
 </body>
 </html>
- 

@@ -6,13 +6,15 @@ ini_set('display_errors', 1);
 /** @var mysqli $db */
 require_once "includes/connection.php";
 
+session_start();
+
+$user_id = $_SESSION['user_id'];
+
 $date = $_POST['date'];
 
 
 
 $query = "SELECT * FROM availablities WHERE date = '$date'";
-
-
 
 $result = mysqli_query($db, $query)
 or die('Error '.mysqli_error($db).' with query '.$query);
@@ -24,10 +26,10 @@ or die('Error '.mysqli_error($db).' with query '.$query);
 $times = [];
 $availabilities = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    $availabilities[] = $row;
+
     $startTime = strtotime($row['timestamp_begin']); // Begin tijd
     $endTime = strtotime($row['timestamp_end']); // Een eindtijd
-    $timeLenght = 60*60; // Regel voor lengte tijdsloten
+    $timeLenght = 60*30; // Regel voor lengte tijdsloten
 
 
     for ($time = $startTime; $time < $endTime; $time += $timeLenght) {
@@ -37,6 +39,41 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 }
 
+$query = "SELECT * FROM appointments WHERE date = '$date'";
+
+$result = mysqli_query($db, $query)
+or die('Error '.mysqli_error($db).' with query '.$query);
+
+$unavailable = [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $unavailable[] = $row['reservedTimeBegin'];
+
+}
+
+
+    foreach ($times as $time) {
+        if (in_array($time, $unavailable)) {
+            unset($times[$time['timestamp_begin']]);
+        }
+    }
+
+    $errorMessage = [];
+
+if (isset($_POST['submit'])) {
+    $timeslot = mysqli_escape_string($db, $_POST['selected_time'] ?? '');
+    $description = mysqli_escape_string($db, $_POST['description'] ?? '');
+    $date = mysqli_escape_string($db, $_POST['date'] ?? '');
+
+
+    if ($description == '') {
+        $errorMessage['description'] = "Vul een beschrijving in van wat u wilt alstublieft!";
+    }
+
+    $query = "INSERT INTO appointments (date, user_id, discription, reservedTimeBegin, reservedTimeEnd, timeslot ) VALUES  ('$date', '$user_id', '$description', NOW(), NOW(), '$timeslot' )";
+    $result = mysqli_query($db, $query)
+    or die('Error '.mysqli_error($db).' with query '.$query);
+}
 
 
 
@@ -138,6 +175,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 <main>
     <section class="section is-medium">
         <h2 class="has-text-centered pb-3 is-size-2">Kies een tijdslot en geef een korte beschrijving</h2>
+        <form class="column is-6 register-form" action="" method="post">
     <div class="field is-horizontal has-addons has-addons-centered">
         <div class="select">
             <label>
@@ -158,11 +196,15 @@ while ($row = mysqli_fetch_assoc($result)) {
             </label>
         </div>
     </div>
+
+
         <div class="field">
             <div class="control">
-                <textarea class="textarea" placeholder="Geef hier een beschrijving"></textarea>
+                <textarea class="textarea" name="description" placeholder="Geef hier een beschrijving"></textarea>
             </div>
         </div>
+
+            <input type="hidden" name="date" value="<?= $_POST['date']; ?>">
 
         <div class="field is-horizontal">
             <div class="field-label is-normal"></div>
@@ -174,6 +216,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             </div>
         </div>
+        </form>
 
 </section>
 
