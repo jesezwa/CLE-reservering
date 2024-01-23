@@ -1,106 +1,95 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// get first row from result (table)
+// get start time
+// get end time from availability
+// create array $times[] with times from start time till end time with 30 minutes space (loop)
+// add 30 minutes to start time
+
+// filter
+
+// create array $availableTimes[]
+
+// get all appointments
+
+// loop over all times
+
+// boolean $isAvailable = true;
+
+// loop over all appointments
+// check if time (from all times) is equal to start time from reservation.
+// set boolean isAvailable = false;
+// if(isAvailable)
+// add time to $availableTimes
+
+/*
+   <?php foreach ($times as $time) { ?>
+                                <?php
+                                $isAvailable = !in_array($time, $availabilities);
+                                if ($isAvailable) {
+                                    $endTime = date('H:i', strtotime($time) + $timeLenght);
+                                    ?>
+                                    <option value="<?= $time ?>">
+                                        <?= "{$time} - {$endTime}" ?>
+                                    </option>
+                                <?php } ?>
+                            <?php } ?>
+*/
+
 //Connectie leggen met de database
 
 /** @var mysqli $db */
 require_once "includes/connection.php";
 require_once "includes/secure.php";
 
-session_start();
-
 $user_id = $_SESSION['user_id'];
 
-$date = $_POST['date'];
 
+// Afspraak maken
+if(isset($_POST['submit'])) {
 
+    // Haalt de gekozen datum op
+    $date = $_POST['date'];
+    $times = [];
+    $availableTimes = [];
+    $query = "SELECT * FROM availablities WHERE date = '$date'";
 
-$query = "SELECT * FROM availablities WHERE date = '$date'";
+    $result = mysqli_query($db, $query)
+    or die('Error ' . mysqli_error($db) . ' with query ' . $query);
 
-$result = mysqli_query($db, $query)
-or die('Error '.mysqli_error($db).' with query '.$query);
-
-
-
-
-
-$times = [];
-$availabilities = [];
-while ($row = mysqli_fetch_assoc($result)) {
+    // Zet de tijden die gekozen zijn, met juiste format in een array
+    $row = mysqli_fetch_assoc($result);
 
     $startTime = strtotime($row['timestamp_begin']); // Begin tijd
     $endTime = strtotime($row['timestamp_end']); // Een eindtijd
-    $timeLenght = 60*30; // Regel voor lengte tijdsloten
+    $timeLength = 60 * 30; // Rekensom voor het maken van de tijdsloten (half uur in dit geval)
 
 
-    for ($time = $startTime; $time < $endTime; $time += $timeLenght) {
+    for ($time = $startTime; $time < $endTime; $time += $timeLength) {
         $times[] = date('H:i', $time); //Zet met date functie time in juiste format in array
 
     }
 
-}
+    // Haal de niet beschikbare tijden voor gekozen datum op
+    $query = "SELECT * FROM appointments WHERE date = '$date'";
 
-$query = "SELECT * FROM appointments WHERE date = '$date'";
-
-$result = mysqli_query($db, $query)
-or die('Error '.mysqli_error($db).' with query '.$query);
-
-$unavailable = [];
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $unavailable[] = $row['reservedTimeBegin'];
-
-}
-
-
-    foreach ($times as $time) {
-        if (in_array($time, $unavailable)) {
-            unset($times[$time['timestamp_begin']]);
-        }
-    }
-
-    $errorMessage = [];
-
-if (isset($_POST['submit'])) {
-    $timeslot = mysqli_escape_string($db, $_POST['selected_time'] ?? '');
-    $description = mysqli_escape_string($db, $_POST['description'] ?? '');
-    $date = mysqli_escape_string($db, $_POST['date'] ?? '');
-
-
-    if ($description == '') {
-        $errorMessage['description'] = "Vul een beschrijving in van wat u wilt alstublieft!";
-    }
-
-    $query = "INSERT INTO appointments (date, user_id, discription, reservedTimeBegin, reservedTimeEnd, timeslot ) VALUES  ('$date', '$user_id', '$description', NOW(), NOW(), '$timeslot' )";
     $result = mysqli_query($db, $query)
-    or die('Error '.mysqli_error($db).' with query '.$query);
+    or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
+    // Zet de opgehaalde tijden in een array met juiste format
+    while($row = mysqli_fetch_assoc($result)) {
+        $timeSlot = strtotime($row['timeslot']);
+        $unavailableTimes[] = date('H:i', $timeSlot);
+    }
+
+
+    // Filter de al gekozen tijden en de beschikbare tijden en zet in een array
+    $availableTimes = array_diff($times, $unavailableTimes);
+
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print_r($availableTimes);
 
 ?>
 
@@ -115,7 +104,8 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=GFS+Neohellenic:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Gentium+Plus:ital,wght@0,400;1,700&family=Young+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=GFS+Neohellenic:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Gentium+Plus:ital,wght@0,400;1,700&family=Young+Serif&display=swap"
+          rel="stylesheet">
     <title>Wilma haakt</title>
     <script src="datepicker.js"></script>
 </head>
@@ -153,7 +143,7 @@ if (isset($_POST['submit'])) {
         </div>
 
         <!-- Navbar rechter kant -->
-        <?php if(isset($user_id)) {?>
+        <?php if (isset($user_id)) { ?>
             <form action="" method="post">
                 <input type="submit" name="logout" value="Logout">
             </form>
@@ -167,7 +157,7 @@ if (isset($_POST['submit'])) {
                 Login
             </a>
 
-            <?php }?>
+            <?php } ?>
         </div>
     </div>
 
@@ -177,53 +167,43 @@ if (isset($_POST['submit'])) {
     <section class="section is-medium">
         <h2 class="has-text-centered pb-3 is-size-2">Kies een tijdslot en geef een korte beschrijving</h2>
         <form class="column is-6 register-form" action="" method="post">
-    <div class="field is-horizontal has-addons has-addons-centered">
-        <div class="select">
-            <label>
-                <select name="selected_time">
-                    <?php foreach ($times as $time){?>
-                        <?php
-                        $isAvailable = !in_array($time, $availabilities);
-                        if ($isAvailable) {
-                            $endTime = date('H:i', strtotime($time) + $timeLenght);
-                            ?>
-                            <option value="<?= $time ?>">
-                                <?= "{$time} - {$endTime}" ?>
-                            </option>
-                        <?php } ?>
-                    <?php }?>
+            <div class="field is-horizontal has-addons has-addons-centered">
+                <div class="select">
+                    <label>
+                        <select name="selected_time">
 
-                </select>
-            </label>
-        </div>
-    </div>
+                            <?php foreach ($availableTimes as $time) { ?>
+                                <option><?= $time; ?></option>
+                            <?php } ?>
 
-
-        <div class="field">
-            <div class="control">
-                <textarea class="textarea" name="description" placeholder="Geef hier een beschrijving"></textarea>
+                        </select>
+                    </label>
+                </div>
             </div>
-        </div>
-
-            <input type="hidden" name="date" value="<?= $_POST['date']; ?>">
-
-        <div class="field is-horizontal">
-            <div class="field-label is-normal"></div>
-            <div class="field-body">
-                <a class="button is-link is-fullwidth" href="reservate1.php">Ga terug</a>
-                <button class="button is-link is-fullwidth" type="submit" name="submit">Maak afspraak</button>
 
 
-
+            <div class="field">
+                <div class="control">
+                    <textarea class="textarea" name="description" placeholder="Geef hier een beschrijving"></textarea>
+                </div>
             </div>
-        </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal"></div>
+                <div class="field-body">
+                    <a class="button is-link is-fullwidth" href="reservate1.php">Ga terug</a>
+                    <button class="button is-link is-fullwidth" type="submit" name="submit">Maak afspraak</button>
+
+
+                </div>
+            </div>
         </form>
 
-</section>
+    </section>
 
 </main>
 
-<footer >
+<footer>
     <section class="hero is-small is-primary footer-hero">
         <div class="hero-body">
             <div class="columns">
@@ -276,12 +256,9 @@ if (isset($_POST['submit'])) {
                 </div>
 
 
-
-
             </div>
 
         </div>
-
 
 
 </footer>
