@@ -23,14 +23,6 @@ if(isset($_POST['submit'])) {
     }
 
 
-    if (!empty($_POST['date'])) {
-        $to = $user_id['email'];
-        $subject = "Bevestiging afspraak WILMA";
-        $message = "Heel erg bedankt met het maken van een afsrpaak bij WILMA! Ik kijk uit naar onze afspraak op $date. Het adres is Bob de brouwerstraat 25 in Bodegraven.";
-        $headers = "From: wilmahaakt@gmail.com\r\n";
-
-        mail($to, $subject, $message, $headers);
-    }
 }
 
 
