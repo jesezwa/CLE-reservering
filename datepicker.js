@@ -26,3 +26,25 @@ function setValue() {
 window.onload = setValue;
 
 
+<div className="field is-horizontal has-addons has-addons-centered">
+    <div className="select">
+        <label>
+            <select name="selected_time">
+                <?php foreach ($times as $time){?>
+                <?php
+                $isAvailable = !in_array($time, $availabilities);
+                if ($isAvailable) {
+                    $endTime = date('H:i', strtotime($time) + $timeLenght);
+                    ?>
+                <option value="<?= $time ?>">
+                    <?= "{$time} - {$endTime}" ?>
+                </option>
+                <?php } ?>
+                <?php }?>
+
+            </select>
+        </label>
+    </div>
+</div>
+
+
