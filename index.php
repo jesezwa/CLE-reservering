@@ -5,8 +5,6 @@ ini_set('display_errors', 1);
 require_once 'includes/connection.php';
 require_once 'includes/secure.php';
 
-$user_id = $_SESSION['user_id'];
-
 
 ?>
 
