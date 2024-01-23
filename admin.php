@@ -27,6 +27,25 @@ if (mysqli_num_rows($result) > 0) {
     exit;
 }
 
+// Your SQL query to insert data into the database
+$query = "INSERT INTO `availablities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
+
+// Execute the query
+$result = mysqli_query($db, $query);
+
+// Check if the query was successful
+if ($result) {
+
+} else {
+    echo "Error: " . mysqli_error($db);
+}
+
+// Close the database connection
+mysqli_close($db);
+
+
+
+
 ?>
 
 <!doctype html>
@@ -98,77 +117,16 @@ if (mysqli_num_rows($result) > 0) {
 
 </header>
 <main>
-    <!-- Header wilma -->
-    <section class="hero home-header is-medium is-info">
-        <div class="hero-body">
-
-            <div class="columns is-centered">
-                <div class="column is-centered">
-                    <h1 class="is-size-1 has-text-centered mb-4"> Haak vreugde bij Wilma</h1>
-                    <div class="columns">
-                        <div class="column">
-                            <p class="has-text-centered is-size-4 pb-4"> Bestel hier de beste, mooiste en meest goedkope haakwerken
-                                van Nederland
-                            </p>
-                            <div class="columns is-centered">
-                                <button class="button is-normal reserve-button">Reserveer hier !</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+<div class="columns">
+    <?php }foreach(blabla as bla) { ?>
+        <div class="column">
+            <h1>Geplande afspraken </h1>
+            <?= $tijd ?>
+            <?= $beschrijving ?>
         </div>
-    </section>
-
-    <!-- Sectie met voorbeelden van voormalige projecten -->
-    <section class="section is-medium examples">
-        <div class="columns">
-            <div class="column">
-                <h1 class="has-text-centered is-size-1">Voormalige projecten</h1>
-                <div class="columns">
-                    <div class="column">
-                        <div class="tile is-parent">
-                            <article class="tile is-child notification is-info example-projects">
-                                <p class="title">Middle tile</p>
-                                <p class="subtitle">With an image</p>
-                                <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/640x480.png">
-                                </figure>
-                                <p class="subtitle pt-3">With an image</p>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="tile is-parent">
-                            <article class="tile is-child notification is-info example-projects">
-                                <p class="title">Middle tile</p>
-                                <p class="subtitle">With an image</p>
-                                <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/640x480.png">
-                                </figure>
-                                <p class="subtitle pt-3">With an image</p>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="tile is-parent">
-                            <article class="tile is-child notification is-info example-projects">
-                                <p class="title">Middle tile</p>
-                                <p class="subtitle">With an image</p>
-                                <figure class="image is-4by3">
-                                    <img src="https://bulma.io/images/placeholders/640x480.png">
-                                </figure>
-                                <p class="subtitle pt-3">With an image</p>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-
-    </section>
+    <?php } ?>
+</div>
 </main>
-
 <!-- Homepagina, wanneer er wel is ingelogd komt nog hier -->
 
 <footer>

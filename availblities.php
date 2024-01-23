@@ -100,16 +100,16 @@ if (mysqli_num_rows($result) > 0) {
 
 
     <!-- ... Other HTML code ... -->
+
+
     <div class="availblities">
-
-
-    <form method="post" action="process.php">
-        <div class="columns">
-            <div class="column">
-                <div class="field">
+        <form method="post" action="process.php">
+            <div class="columns">
+             <div class="column">
+                    <div class="field">
                     <label class="label">Datum</label>
-                    <div class="control">
-                        <input class="input" type="date" name="selected_date">
+                     <div class="control">
+                            <input class="input" type="date" name="selected_date">
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@ if (mysqli_num_rows($result) > 0) {
 </main>
 
 <footer>
-    <section class="hero is-small is-primary footer-hero">
+    <div class="hero is-small is-primary footer-hero">
         <div class="hero-body">
             <div class="columns">
                 <!-- Linker kant van de footer -->
@@ -234,7 +234,7 @@ if (mysqli_num_rows($result) > 0) {
 
         </div>
     </div>
-
+    </div>
 
     </section>
 
