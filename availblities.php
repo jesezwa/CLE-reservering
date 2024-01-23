@@ -100,8 +100,10 @@ if (mysqli_num_rows($result) > 0) {
 
 
     <!-- ... Other HTML code ... -->
+    <div class="availblities">
 
-    <form method="post" action="includes/process_form.php">
+
+    <form method="post" action="process.php">
         <div class="columns">
             <div class="column">
                 <div class="field">
@@ -201,7 +203,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 <!-- Logo in het midden -->
                 <div class="column is-one-third has-text-centered">
-                    <a href="admin.php"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
+                    <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
                 </div>
 
 
@@ -228,13 +230,13 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </div>
 
-
-
-
             </div>
 
         </div>
+    </div>
 
+
+    </section>
 
 
 </footer>
