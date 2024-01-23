@@ -118,13 +118,7 @@ mysqli_close($db);
 </header>
 <main>
 <div class="columns">
-    <?php }foreach(blabla as bla) { ?>
-        <div class="column">
-            <h1>Geplande afspraken </h1>
-            <?= $tijd ?>
-            <?= $beschrijving ?>
-        </div>
-    <?php } ?>
+
 </div>
 </main>
 <!-- Homepagina, wanneer er wel is ingelogd komt nog hier -->
