@@ -1,60 +1,33 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-//Connectie leggen met de database
-
+// connectie database
 /** @var mysqli $db */
 require_once "includes/connection.php";
 require_once 'includes/secure.php';
 
-$user_id = $_SESSION['user_id'];
 
-$date = '';
+// Check if the form has been submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Retrieve form data
+    $selectedDate = $_POST['selected_date'] ?? '';
+    $selectedBeginTime = $_POST['selected_begin_time'] ?? '';
+    $selectedEndTime = $_POST['selected_end_time'] ?? '';
 
-if(isset($_POST['submit'])) {
-    $errorMessage = [];
+    // Your SQL query to insert data into the database
+    $query = "INSERT INTO `availablities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
 
-    $date = $_POST['date'];
+    // Execute the query
+    $result = mysqli_query($db, $query);
 
+    // Check if the query was successful
+    if ($result) {
 
-
-    if ($date == '') {
-        $errorMessage['date'] = "Vul alsjeblieft een datum in";
+    } else {
+        echo "Error: " . mysqli_error($db);
     }
 
-
-    if (!empty($_POST('date'))) {
-        $to = $user_id['email'];
-        $subject = "Bevestiging afspraak WILMA";
-        $message = "Heel erg bedankt met het maken van een afsrpaak bij WILMA! Ik kijk uit naar onze afspraak op $date. Het adres is Bob de brouwerstraat 25 in Bodegraven.";
-        $headers = "From: wilmahaakt@gmail.com\r\n";
-
-        mail($to, $subject, $message, $headers);
-    }
-
+    // Close the database connection
+    mysqli_close($db);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -75,12 +48,10 @@ if(isset($_POST['submit'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=GFS+Neohellenic:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Gentium+Plus:ital,wght@0,400;1,700&family=Young+Serif&display=swap" rel="stylesheet">
     <title>Wilma haakt</title>
-    <script src="datepicker.js"></script>
 </head>
 
-<?php if (isset($user_id)) { ?>
-
 <body>
+
 <nav class="navbar" role="navigation" aria-label="main navigation">
 
     <div class="navbar-brand">
@@ -100,7 +71,7 @@ if(isset($_POST['submit'])) {
                 Informatie
             </a>
 
-            <a class="navbar-item">
+            <a class="navbar-item" href="reservate1.php">
                 Reserveren
             </a>
 
@@ -133,57 +104,47 @@ if(isset($_POST['submit'])) {
 </nav>
 
 <main>
-    <section class="section">
-        <div class="container content">
+    <section class="hero is-medium is-primary information-hero">
+        <div class="hero-body">
+            <h2 class="has-text-centered is-size-1 pb-5">Beschikbaarheid door gegeven!</h2>
+            <div class="tile is-parent">
+
+                    <div class="content">
+                        <div class="columns">
+                            <div class="column">
+
+                                <!-- Formulier voor knop naar index.php -->
+                                <form action="availblities.php" method="post">
+                                    <div class="field is-horizontal">
+                                        <div class="field-label is-normal"></div>
+                                        <div class="field-body">
+                                            <button class="button login-button is-link is-fullwidth has-text-centered" type="submit" name="submit">Nog meer beschikbaarheid invullen?</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!-- Formulier voor knop naar availablities.php -->
+                                <form action="index.php" method="post">
+                                    <div class="field is-horizontal">
+                                        <div class="field-label is-normal"></div>
+                                        <div class="field-body">
+                                            <button class="button login-button is-link is-fullwidth has-text-centered" type="submit" name="submit">Terug naar de home pagina</button>
+                                        </div>
+                                    </div>
+                                </form>
 
 
-            <div class="column">
-                <h2 class="title pl-6 has-text-centered">Kies een datum voor je afspraak</h2>
-            </div>
 
-            <section class="columns is-centered">
-                <form class="column is-6 register-form" action="reservate2.php" method="post">
-
-                    <!-- Datum -->
-                    <div class="field is-horizontal">
-                        <div class="field-body">
-                            <div class="field">
-                                <div class="control has-icons-left">
-                                    <input class="input" id="date" type="date" name="date" value="<?php if(isset($date)) { echo $date; } ?>" onchange= reload() />
-                                    <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
-                                </div>
-                                <p class="help is-danger">
-                                    <?php
-                                    if (isset($errorMessage['date'])) {
-                                        echo $errorMessage['date'];
-                                    }
-                                    ?>
-                                </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tijdslot -->
-
-
-                    <!-- Submit -->
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal"></div>
-                        <div class="field-body">
-
-                            <button class="button is-link is-fullwidth" type="submit" name="submit">Volgende</button>
-
-
-                        </div>
-                    </div>
-
-                </form>
-
-            </section>
-
+            </div>
+        </div>
+    </section>
 </main>
 
-<footer >
+<footer>
     <section class="hero is-small is-primary footer-hero">
         <div class="hero-body">
             <div class="columns">
@@ -242,11 +203,8 @@ if(isset($_POST['submit'])) {
 
         </div>
 
-
-
+    </section>
 </footer>
 </body>
-
-<?php } else header("Location: login.php"); ?>
 
 </html>

@@ -4,7 +4,20 @@ body {
     font-family: 'Anton', sans-serif;
 
 }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
 html {
     background-color: #D6D6D6;
 }
@@ -94,7 +107,9 @@ section .examples {
 
 /* footer CSS */
 footer {
+
     position: sticky;
+
 
 }
 a{
@@ -240,5 +255,19 @@ h6{
     text-align: center;
     margin-top: 4rem;
 }
-/* reserveren CSS */
 
+
+
+
+
+
+footer {
+    margin-top: auto;
+}
+
+/* availblities CSS */
+
+.availblities{
+    min-height: 500px;
+    color: #505050;
+}
