@@ -114,36 +114,37 @@ require_once 'includes/secure.php';
             <div class="column">
                 <div class="tile is-parent">
                     <article class="tile is-child notification is-info example-projects">
-                        <p class="title">Middle tile</p>
-                        <p class="subtitle">With an image</p>
+                        <p class="title">Voetbal</p>
+                        <p class="subtitle">Ik heb een voetbal gemaakt voor mijn buurjongen omdat die van voetballen houd</p>
                         <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="images/voetbal.jpg">
                         </figure>
-                        <p class="subtitle pt-3">With an image</p>
+
                     </article>
                 </div>
             </div>
             <div class="column">
                 <div class="tile is-parent">
                     <article class="tile is-child notification is-info example-projects">
-                        <p class="title">Middle tile</p>
-                        <p class="subtitle">With an image</p>
+                        <p class="title">Katten</p>
+                        <p class="subtitle">Ik heb deze gemaakt omdat een zoontje van mijn vriendin in het ziekhuis lag</p>
                         <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="images/kat.jpg">
                         </figure>
-                        <p class="subtitle pt-3">With an image</p>
+
                     </article>
                 </div>
             </div>
             <div class="column">
                 <div class="tile is-parent">
                     <article class="tile is-child notification is-info example-projects">
-                        <p class="title">Middle tile</p>
-                        <p class="subtitle">With an image</p>
+                        <p class="title">Snowboardende honden</p>
+                        <p class="subtitle">
+                            Met haaknaald en creativiteit heb ik schattige snowboardende honden gemaakt. Ze brengen plezier en winterse energie in elke verzameling.</p>
                         <figure class="image is-4by3">
-                            <img src="https://bulma.io/images/placeholders/640x480.png">
+                            <img src="images/snowboard.jpg">
                         </figure>
-                        <p class="subtitle pt-3">With an image</p>
+
                     </article>
                 </div>
             </div>

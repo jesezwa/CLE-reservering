@@ -159,14 +159,14 @@ mysqli_close($db);
 <main>
     <main>
 
-            <div class="timetable" >
+
                 <h2>Afspraken: <?php echo $selectedDate; ?></h2>
                 <?php
                 foreach ($availableTimes as $time) {
                     echo "<p>{$time['timestamp_begin']} - {$time['timestamp_end']}</p>";
                 }
                 ?>
-
+        <div class="timetable" >
         </div>
     </main>
 
