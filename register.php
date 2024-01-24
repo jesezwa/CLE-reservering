@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
         }
         if (empty($_POST['acceptTerms'])) {
             // laat error zien
-            $termsError = 'Acepteer de terms en conditions.';
+            $termsError = 'Accepteer de terms en conditions.';
         }
     } else {
         // post in variabelen zetten

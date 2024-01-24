@@ -17,10 +17,10 @@ if(isset($_POST['submit'])) {
     $date = $_POST['date'];
 
 
-
     if ($date == '') {
         $errorMessage['date'] = "Vul alsjeblieft een datum in";
     }
+
 
 
 }
@@ -103,22 +103,10 @@ if(isset($_POST['submit'])) {
         </div>
 
         <!-- Navbar rechter kant -->
-        <?php if(isset($user_id)) {?>
-            <form action="" method="post">
-                <input type="submit" name="logout" value="Logout">
-            </form>
-        <?php } else { ?>
-        <div class="navbar-end pr-4">
-            <a class="navbar-item" href="register.php">
-                Register
-            </a>
+        <form action="" method="post">
+            <input type="submit" name="logout" value="Logout">
+        </form>
 
-            <a class="navbar-item" href="login.php">
-                Login
-            </a>
-
-            <?php }?>
-        </div>
     </div>
 
 </nav>

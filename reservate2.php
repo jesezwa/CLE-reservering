@@ -93,16 +93,34 @@ if(isset($_POST['submit'])) {
         $userId = $_SESSION['user_id']; // Aangenomen dat de gebruikers-ID in de sessie wordt opgeslagen
 
         // Voer je INSERT INTO query uit
-        $insertQuery = "INSERT INTO appointments (user_id, date, timeslot, description) VALUES ('$userId', '$date', '$timeSlot', '$description')";
+        $insertQuery = "INSERT INTO appointments (user_id, date, description , timeslot) VALUES ('$userId', '$date', '$description', '$timeSlot')";
 
         $result = mysqli_query($db, $insertQuery)
         or die('Error ' . mysqli_error($db) . ' with query ' . $insertQuery);
 
-       }
+        /*
+        if (!empty($_POST['date'])) {
+            // Controleer of $user_id correct is
+            if (isset($user_id['email'])) {
+                $to = $user_id['email'];
+                // Zorg ervoor dat $date correct is
+                $date = $_POST['date'];
+                $subject = "Bevestiging afspraak WILMA";
+                $message = "Heel erg bedankt voor het maken van een afspraak bij WILMA! Ik kijk uit naar onze afspraak op $date. Het adres is Bob de Brouwerstraat 25 in Bodegraven.";
+                $headers = "From: wilmahaakt@gmail.com\r\n";
+
+                // Probeer de e-mail te verzenden
+                mail($to, $subject, $message, $headers);
+            }
+        }
+        */
 
         header("Location: index.php");
         // Exit the code
         exit;
+       }
+
+
 
 }
 ?>
