@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="column">
 
                                 <!-- Formulier voor knop naar index.php -->
-                                <form action="availblities.php" method="post">
+                                <form action="availabilities.php" method="post">
                                     <div class="field is-horizontal">
                                         <div class="field-label is-normal"></div>
                                         <div class="field-body">
