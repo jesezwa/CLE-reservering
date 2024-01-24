@@ -51,6 +51,7 @@ if(isset($_POST['submit'])) {
     $date = $_POST['date'];
     $times = [];
     $availableTimes = [];
+    $unavailableTimes = [];
     $query = "SELECT * FROM availablities WHERE date = '$date'";
 
     $result = mysqli_query($db, $query)
@@ -77,8 +78,10 @@ if(isset($_POST['submit'])) {
 
     // Zet de opgehaalde tijden in een array met juiste format
     while($row = mysqli_fetch_assoc($result)) {
-        $timeSlot = strtotime($row['timeslot']);
-        $unavailableTimes[] = date('H:i', $timeSlot);
+        if (isset($row['timeslot'])) {
+            $timeSlot = strtotime($row['timeslot']);
+            $unavailableTimes[] = date('H:i', $timeSlot);
+        }
     }
 
 
@@ -89,8 +92,6 @@ if(isset($_POST['submit'])) {
 
 
 }
-print_r($availableTimes);
-
 ?>
 
 <!doctype html>
@@ -170,10 +171,10 @@ print_r($availableTimes);
             <div class="field is-horizontal has-addons has-addons-centered">
                 <div class="select">
                     <label>
-                        <select name="selected_time">
+                        <select class="timetable" name="selected_time">
 
-                            <?php foreach ($availableTimes as $time) { ?>
-                                <option><?= $time; ?></option>
+                            <?php foreach ($availableTimes as $time) {  $endTime = date('H:i', strtotime($time) + $timeLength); ?>
+                                <option><?= "{$time} - {$endTime}" ?></option>
                             <?php } ?>
 
                         </select>
