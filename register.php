@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
         $phoneNumber = mysqli_real_escape_string($db, $_POST['phoneNumber']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
         $password = PASSWORD_HASH($_POST['password'], PASSWORD_DEFAULT);
-        $admin = $email = mysqli_real_escape_string($db, $_POST['admin']);
+        $admin = mysqli_real_escape_string($db, $_POST['admin']);
 
         // query maken om data in database te zetten
         $query = "INSERT INTO `users`( `email`, `password`, `first_name`, `last_name`, `phone_number`, `user_created`, `admin`) VALUES ( '$email','$password','$firstName','$lastName','$phoneNumber',NOW(), '$admin')";

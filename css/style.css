@@ -25,11 +25,22 @@ html {
 /* Nav CSS */
 .navbar{
     background-color: #A7713F;
+    padding: 40px;
+
 }
 
+nav a{
+
+}
+
+nav.navbar {
+    display: flex;
+
+}
 
 .navbar a {
     color: #fff;
+    align-content: center;
 }
 
 .navbar .logo {
