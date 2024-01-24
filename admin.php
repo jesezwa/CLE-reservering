@@ -43,7 +43,7 @@ require_once 'includes/secure.php';
                 Informatie
             </a>
 
-            <a class="navbar-item" href="availblities.php">
+            <a class="navbar-item" href="availabilities.php">
                 Beschikbaarheid
             </a>
 
