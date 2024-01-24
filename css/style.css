@@ -282,3 +282,14 @@ footer {
     min-height: 500px;
     color: #505050;
 }
+/* Admin css */
+
+.timetable{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 10px;
+
+
+}

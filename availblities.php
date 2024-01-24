@@ -29,6 +29,15 @@ if (mysqli_num_rows($result) > 0) {
     exit;
 }
 
+if (!empty($_POST['date'])) {
+    $to = $user_id['email'];
+    $subject = "Bevestiging afspraak WILMA";
+    $txt = "Heel erg bedankt met het maken van een afsrpaak bij WILMA! Ik kijk uit naar onze afspraak op. Het adres is Bob de brouwerstraat 25 in Bodegraven.";
+    $headers = "From: wilmahaakt@gmail.com" . "\r\n";
+
+    mail($to, $subject, $txt, $headers);
+}
+
 ?>
 
 <!doctype html>

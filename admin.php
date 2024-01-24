@@ -3,50 +3,90 @@
 require_once 'includes/connection.php';
 require_once 'includes/secure.php';
 
-// Check of gebruiker is ingelogd
+// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    // als dit niet zo is stuur naar login
+    // If not, redirect to the login page
     header("Location: login.php");
     exit;
 }
 
 $user_id = $_SESSION['user_id'];
+
+// Check if the user is an admin
 $query = "SELECT * FROM users WHERE id = $user_id";
 $result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db));
 
 if (mysqli_num_rows($result) > 0) {
     $user_row = mysqli_fetch_assoc($result);
     if ($user_row['admin'] != 1) {
-        // Niet admin stuur naar index
+        // If not an admin, redirect to the index page
         header("Location: index.php");
         exit;
     }
 } else {
-    // Gebruiker bestaat niet stuur naar log in
+    // If user does not exist, redirect to the login page
     header("Location: login.php");
     exit;
 }
 
-// Your SQL query to insert data into the database
-$query = "INSERT INTO `availablities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
+// Check if form data is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Assuming you have a form with input fields named selectedDate, selectedBeginTime, and selectedEndTime
+    $selectedDate = $_POST['selectedDate'];
+    $selectedBeginTime = $_POST['selectedBeginTime'];
+    $selectedEndTime = $_POST['selectedEndTime'];
 
-// Execute the query
-$result = mysqli_query($db, $query);
+    // Your SQL query to insert data into the database
+    $query = "INSERT INTO `availablities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
 
-// Check if the query was successful
-if ($result) {
+    // Execute the query
+    $result = mysqli_query($db, $query);
 
-} else {
-    echo "Error: " . mysqli_error($db);
+    // Check if the query was successful
+    if ($result) {
+        // Do something if the insertion is successful
+    } else {
+        echo "Error: " . mysqli_error($db);
+    }
+}
+
+// Retrieve available times for the selected date
+$selectedDate = date('Y-m-d'); // Replace this with the selected date
+
+$query = "SELECT `timestamp_begin`, `timestamp_end` FROM `availablities` WHERE `date` = '$selectedDate'";
+$result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db));
+
+$availableTimes = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $availableTimes[] = $row;
 }
 
 // Close the database connection
 mysqli_close($db);
-
-
-
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include your meta tags, stylesheets, and title -->
+</head>
+<body>
+
+<!-- Your existing HTML code -->
+
+
+
+<!-- Your existing HTML code -->
+
+</body>
+</html>
+
+
+<!doctype html>
+<html lang="en">
+<!-- The rest of your HTML code remains unchanged -->
+</html>
+
 
 <!doctype html>
 <html lang="en">
@@ -117,11 +157,22 @@ mysqli_close($db);
 
 </header>
 <main>
-<div class="columns">
+    <main>
+
+
+                <h2>Afspraken: <?php echo $selectedDate; ?></h2>
+                <?php
+                foreach ($availableTimes as $time) {
+                    echo "<p>{$time['timestamp_begin']} - {$time['timestamp_end']}</p>";
+                }
+                ?>
+        <div class="timetable" >
+        </div>
+    </main>
 
 </div>
 </main>
-<!-- Homepagina, wanneer er wel is ingelogd komt nog hier -->
+
 
 <footer>
     <section class="hero is-small is-primary footer-hero">
@@ -147,7 +198,7 @@ mysqli_close($db);
                 </div>
                 <!-- Logo in het midden -->
                 <div class="column is-one-third has-text-centered">
-                    <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
+                    <a href="admin.php"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
                 </div>
 
 
