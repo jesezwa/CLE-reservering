@@ -51,7 +51,7 @@ if(isset($_POST['submit'])) {
     $times = [];
     $availableTimes = [];
     $unavailableTimes = [];
-    $query = "SELECT * FROM availablities WHERE date = '$date'";
+    $query = "SELECT * FROM availabilities WHERE date = '$date'";
 
     $result = mysqli_query($db, $query)
     or die('Error ' . mysqli_error($db) . ' with query ' . $query);

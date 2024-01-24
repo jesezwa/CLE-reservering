@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $selectedEndTime = $_POST['selected_end_time'] ?? '';
 
     // Your SQL query to insert data into the database
-    $query = "INSERT INTO `availablities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
+    $query = "INSERT INTO `availabilities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
 
     // Execute the query
     $result = mysqli_query($db, $query);
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </div>
                                 </form>
 
-                                <!-- Formulier voor knop naar availablities.php -->
+                                <!-- Formulier voor knop naar availabilities.php -->
                                 <form action="index.php" method="post">
                                     <div class="field is-horizontal">
                                         <div class="field-label is-normal"></div>

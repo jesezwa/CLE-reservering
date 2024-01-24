@@ -1,92 +1,12 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 /** @var mysqli $db */
 require_once 'includes/connection.php';
 require_once 'includes/secure.php';
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    // If not, redirect to the login page
-    header("Location: login.php");
-    exit;
-}
 
-$user_id = $_SESSION['user_id'];
-
-// Check if the user is an admin
-$query = "SELECT * FROM users WHERE id = $user_id";
-$result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db));
-
-if (mysqli_num_rows($result) > 0) {
-    $user_row = mysqli_fetch_assoc($result);
-    if ($user_row['admin'] != 1) {
-        // If not an admin, redirect to the index page
-        header("Location: index.php");
-        exit;
-    }
-} else {
-    // If user does not exist, redirect to the login page
-    header("Location: login.php");
-    exit;
-}
-
-// Check if form data is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Assuming you have a form with input fields named selectedDate, selectedBeginTime, and selectedEndTime
-    $selectedDate = $_POST['selectedDate'];
-    $selectedBeginTime = $_POST['selectedBeginTime'];
-    $selectedEndTime = $_POST['selectedEndTime'];
-
-    // Your SQL query to insert data into the database
-    $query = "INSERT INTO `availablities`(`date`, `timestamp_begin`, `timestamp_end`) VALUES ('$selectedDate', '$selectedBeginTime', '$selectedEndTime')";
-
-    // Execute the query
-    $result = mysqli_query($db, $query);
-
-    // Check if the query was successful
-    if ($result) {
-        // Do something if the insertion is successful
-    } else {
-        echo "Error: " . mysqli_error($db);
-    }
-}
-
-// Retrieve available times for the selected date
-$selectedDate = date('Y-m-d'); // Replace this with the selected date
-
-$query = "SELECT `timestamp_begin`, `timestamp_end` FROM `availablities` WHERE `date` = '$selectedDate'";
-$result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db));
-
-$availableTimes = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $availableTimes[] = $row;
-}
-
-// Close the database connection
-mysqli_close($db);
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Include your meta tags, stylesheets, and title -->
-</head>
-<body>
-
-<!-- Your existing HTML code -->
-
-
-
-<!-- Your existing HTML code -->
-
-</body>
-</html>
-
-
-<!doctype html>
-<html lang="en">
-<!-- The rest of your HTML code remains unchanged -->
-</html>
-
 
 <!doctype html>
 <html lang="en">
@@ -119,9 +39,12 @@ mysqli_close($db);
     <div id="navbarBasicExample" class="navbar-menu">
         <!-- Navbar linker kant-->
         <div class="navbar-start pl-4">
+            <a class="navbar-item" href="information.php">
+                Informatie
+            </a>
 
             <a class="navbar-item" href="availblities.php">
-                beschikbaarheid
+                Beschikbaarheid
             </a>
 
 
@@ -157,22 +80,80 @@ mysqli_close($db);
 
 </header>
 <main>
-    <main>
+    <!-- Header wilma -->
+    <section class="hero home-header is-medium is-info">
+        <div class="hero-body">
+
+            <div class="columns is-centered">
+                <div class="column is-centered">
+                    <h1 class="is-size-1 has-text-centered mb-4"> Haak vreugde bij Wilma</h1>
+                    <div class="columns">
+                        <div class="column">
+                            <p class="has-text-centered is-size-4 pb-4"> Bestel hier de beste, mooiste en meest goedkope haakwerken
+                                van Nederland
+                            </p>
+                            <div class="columns is-centered"><a href="availblities.php">
+                                    <button class="button is-normal reserve-button" > Beschikbaarheid</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
 
-                <h2>Afspraken: <?php echo $selectedDate; ?></h2>
-                <?php
-                foreach ($availableTimes as $time) {
-                    echo "<p>{$time['timestamp_begin']} - {$time['timestamp_end']}</p>";
-                }
-                ?>
-        <div class="timetable" >
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
-</div>
+    <!-- Sectie met voorbeelden van voormalige projecten -->
+    <section class="section is-medium examples">
+        <div class="columns">
+            <div class="column">
+                <h1 class="has-text-centered is-size-1">Voormalige projecten</h1>
+                <div class="columns">
+                    <div class="column">
+                        <div class="tile is-parent">
+                            <article class="tile is-child notification is-info example-projects">
+                                <p class="title">Voetbal</p>
+                                <p class="subtitle">Ik heb een voetbal gemaakt voor mijn buurjongen omdat die van voetballen houd</p>
+                                <figure class="image is-4by3">
+                                    <img src="images/voetbal.jpg">
+                                </figure>
+
+                            </article>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="tile is-parent">
+                            <article class="tile is-child notification is-info example-projects">
+                                <p class="title">Katten</p>
+                                <p class="subtitle">Ik heb deze gemaakt omdat een zoontje van mijn vriendin in het ziekhuis lag</p>
+                                <figure class="image is-4by3">
+                                    <img src="images/kat.jpg">
+                                </figure>
+
+                            </article>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="tile is-parent">
+                            <article class="tile is-child notification is-info example-projects">
+                                <p class="title">Snowboardende honden</p>
+                                <p class="subtitle">
+                                    Met haaknaald en creativiteit heb ik schattige snowboardende honden gemaakt. Ze brengen plezier en winterse energie in elke verzameling.</p>
+                                <figure class="image is-4by3">
+                                    <img src="images/snowboard.jpg">
+                                </figure>
+
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+    </section>
 </main>
 
+<!-- Homepagina, wanneer er wel is ingelogd komt nog hier -->
 
 <footer>
     <section class="hero is-small is-primary footer-hero">
@@ -198,7 +179,7 @@ mysqli_close($db);
                 </div>
                 <!-- Logo in het midden -->
                 <div class="column is-one-third has-text-centered">
-                    <a href="admin.php"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
+                    <a href="#"><img src="images/wilmaLogo.png" width="150" class="logo"></a>
                 </div>
 
 
