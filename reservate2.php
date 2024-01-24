@@ -43,7 +43,6 @@ require_once "includes/secure.php";
 
 $user_id = $_SESSION['user_id'];
 
-
 // Afspraak maken
 if(isset($_POST['submit'])) {
 
@@ -84,12 +83,34 @@ if(isset($_POST['submit'])) {
         }
     }
 
-
     // Filter de al gekozen tijden en de beschikbare tijden en zet in een array
     $availableTimes = array_diff($times, $unavailableTimes);
 
+    // Haalt de gekozen datum op
+    if (isset($_POST['timeslot'])) {
+        $timeSlot = mysqli_real_escape_string($db, $_POST['timeslot']);
+        $description = isset($_POST['description']) ? mysqli_real_escape_string($db, $_POST['description']) : '';
+        $userId = $_SESSION['user_id']; // Aangenomen dat de gebruikers-ID in de sessie wordt opgeslagen
 
+        // Voer je INSERT INTO query uit
+        $insertQuery = "INSERT INTO appointments (user_id, date, timeslot, description) VALUES ('$userId', '$date', '$timeSlot', '$description')";
 
+        $result = mysqli_query($db, $insertQuery)
+        or die('Error ' . mysqli_error($db) . ' with query ' . $insertQuery);
+
+        if (!empty($_POST['date'])) {
+            $to = $user_id['email'];
+            $subject = "Bevestiging afspraak WILMA";
+            $message = "Heel erg bedankt met het maken van een afsrpaak bij WILMA! Ik kijk uit naar onze afspraak op $date. Het adres is Bob de brouwerstraat 25 in Bodegraven.";
+            $headers = "From: wilmahaakt@gmail.com\r\n";
+
+            mail($to, $subject, $message, $headers);
+        }
+
+        header("Location: index.php");
+        // Exit the code
+        exit;
+    }
 
 }
 ?>
@@ -171,7 +192,7 @@ if(isset($_POST['submit'])) {
             <div class="field is-horizontal has-addons has-addons-centered">
                 <div class="select">
                     <label>
-                        <select class="timetable" name="selected_time">
+                        <select name="timeslot">
 
                             <?php foreach ($availableTimes as $time) {  $endTime = date('H:i', strtotime($time) + $timeLength); ?>
                                 <option><?= "{$time} - {$endTime}" ?></option>
@@ -182,6 +203,7 @@ if(isset($_POST['submit'])) {
                 </div>
             </div>
 
+            <input type="hidden" name="date" value="<?= htmlspecialchars($date) ?>">
 
             <div class="field">
                 <div class="control">
